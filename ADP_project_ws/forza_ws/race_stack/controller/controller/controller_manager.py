@@ -1,6 +1,7 @@
 import os
 import yaml
 import rclpy
+import math
 import numpy as np
 from scipy.spatial.transform import Rotation
 from rclpy.node import Node
@@ -21,6 +22,7 @@ from frenet_conversion.frenet_converter import FrenetConverter
 from controller.map import MAP_Controller
 from controller.pp import PP_Controller
 from controller.ftg import FTG_Controller
+from controller.dynamic_mpc import STMPCPlanner , State as MPCState , mpc_config
 from rcl_interfaces.msg import ParameterValue, ParameterType, ParameterDescriptor, FloatingPointRange, IntegerRange
 from tf_transformations import quaternion_from_euler
 from stack_master.parameter_event_handler import ParameterEventHandler
@@ -90,6 +92,13 @@ class Controller(Node):
         self.mode = self.get_parameter('mode').value
         self.mapping = self.get_parameter('mapping').value
 
+        # get l1 parameres
+        stack_master_path = get_package_share_directory('stack_master')
+        config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
+        with open(config_path, 'r') as f:
+            self.l1_params = yaml.safe_load(f)
+            self.l1_params = self.l1_params['controller']['ros__parameters']
+
         # Publishers
         self.publish_topic = '/drive' # TODO adapt car topic name here
         self.drive_pub = self.create_publisher(AckermannDriveStamped, self.publish_topic, 10)
@@ -127,6 +136,11 @@ class Controller(Node):
         elif self.mode == "FTG":
             self.get_logger().info("Initializing FTG controller")
             self.init_ftg_controller()
+            self.prioritize_dyn = False
+        #STMPC 추가
+        elif self.mode == "STMPC" :
+            self.get_logger().info("Initializing STMPC controller")
+            self.init_stmpc_controller()
             self.prioritize_dyn = False
         else:
             self.get_logger().error(f"Invalid mode: {self.mode}")
@@ -246,12 +260,12 @@ class Controller(Node):
 
     def init_map_controller(self):
 
-        # get l1 parameres
-        stack_master_path = get_package_share_directory('stack_master')
-        config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
-        with open(config_path, 'r') as f:
-            self.l1_params = yaml.safe_load(f)
-            self.l1_params = self.l1_params['controller']['ros__parameters']
+        # # get l1 parameres
+        # stack_master_path = get_package_share_directory('stack_master')
+        # config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
+        # with open(config_path, 'r') as f:
+        #     self.l1_params = yaml.safe_load(f)
+        #     self.l1_params = self.l1_params['controller']['ros__parameters']
 
         # self.create_subscription(Imu,'/vesc/sensors/imu/raw', self.imu_cb, 10) # acceleration subscriber for steer change
         self.create_subscription(Imu,'/sensors/imu/raw', self.imu_cb, 10) # acceleration subscriber for steer change
@@ -281,12 +295,12 @@ class Controller(Node):
         
     def init_pp_controller(self):
 
-        # get l1 parameres
-        stack_master_path = get_package_share_directory('stack_master')
-        config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
-        with open(config_path, 'r') as f:
-            self.l1_params = yaml.safe_load(f)
-            self.l1_params = self.l1_params['controller']['ros__parameters']
+        # # get l1 parameres
+        # stack_master_path = get_package_share_directory('stack_master')
+        # config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
+        # with open(config_path, 'r') as f:
+        #     self.l1_params = yaml.safe_load(f)
+        #     self.l1_params = self.l1_params['controller']['ros__parameters']
             
         # get wheelbase
         if self.sim:
@@ -372,7 +386,37 @@ class Controller(Node):
             range_offset=self.state_machine_range_offset,
             track_width=self.state_machine_track_width)
 
+    def init_stmpc_controller(self) :
+        self.mpc_config = mpc_config()
 
+        # [핵심] 차량의 물리 파라미터를 설정합니다.
+        # 이 값들은 'sim.yaml' 또는 차량 문서를 보고 "정확하게" 튜닝해야 합니다.
+        # params = [mass, l_f, l_r, h_CoG, c_f, c_r, Iz, mu]
+        vehicle_params = np.array([
+            3.47,     # mass (kg)
+            0.15875,  # l_f (앞바퀴-무게중심 거리 m)
+            0.17145,  # l_r (뒷바퀴-무게중심 거리 m)
+            0.074,    # h_CoG (무게중심 높이 m)
+            4.718,    # c_f (앞 타이어 강성)
+            5.4562,   # c_r (뒷 타이어 강성)
+            0.04712,  # Iz (관성 모멘트)
+            1.0489    # mu (마찰 계수)
+        ])
+
+        # "전문가" 컨트롤러의 인스턴스를 생성합니다.
+        self.stmpc_controller = STMPCPlanner(
+            waypoints=None, 
+            config=self.mpc_config, 
+            params=vehicle_params
+        )
+
+        # MPC가 7-dim 상태를 필요로 하므로, 부족한 정보를 저장할 변수를 만듭니다.
+        self.current_yaw = 0.0
+        self.current_yaw_rate = 0.0
+        self.current_steering_angle = 0.0 ## (피드백 없음, 0.0으로 가정)
+        self.current_side_slip = 0.0 # (베타)
+
+        self.get_logger().info("Dynamic MPC (STMPCPlanner) initialized.")
 
     def get_remote_parameter(self, remote_node_name, param_name):
         cli = self.create_client(GetParameters, remote_node_name + '/get_parameters')
@@ -479,6 +523,21 @@ class Controller(Node):
     def odom_cb(self, data: Odometry):
         self.speed_now = data.twist.twist.linear.x
 
+        # 동역학 모델(NMPC)을 위한 추가 상태값 추출
+        if self.mode == "STMPC":
+            v_x = data.twist.twist.linear.x
+            v_y = data.twist.twist.linear.y
+            
+            # 1. Yaw Rate (각속도) 저장
+            self.current_yaw_rate = data.twist.twist.angular.z
+            
+            # 2. Beta (슬립각) 계산 및 저장
+            # (v_x가 0에 가까우면 나누기 오류가 나므로 방지)
+            if abs(v_x) < 0.1:
+                self.current_side_slip = 0.0
+            else:
+                self.current_side_slip = math.atan(v_y / v_x)
+
     def car_state_cb(self, data: PoseStamped):
         x = data.pose.position.x
         y = data.pose.position.y
@@ -487,6 +546,9 @@ class Controller(Node):
         rot_euler = rot.as_euler('xyz', degrees=False)
         theta = rot_euler[2]
         self.position_in_map = np.array([x, y, theta])[np.newaxis]
+        
+        #추가
+        self.current_yaw = theta
 
     def local_waypoint_cb(self, data: WpntArray):
         self.waypoint_list_in_map = []
@@ -606,6 +668,85 @@ class Controller(Node):
             pid_msg.input = input
             return pid_msg
 
+    #mpc 추가
+    def stmpc_cycle(self) :
+        # 1. DAgger 학습에 필요한 데이터가 모두 수신되었는지 확인
+        if self.position_in_map is None or self.speed_now is None or self.waypoint_array_in_map is None:
+            self.get_logger().warn("NMPC: Waiting for state or waypoint data...", throttle_duration_sec=1.0)
+            return 0.0, 0.0 # 안전한 값 반환
+
+        # 2. "Dynamic" 모델이 요구하는 'State' 벡터 (7-dim) 생성
+        # [x, y, delta, v, yaw, yawrate, beta]
+        try:
+            states_7dim = np.array([
+                self.position_in_map[0][0],   # x (car_state_cb에서 받음)
+                self.position_in_map[0][1],   # y (car_state_cb에서 받음)
+                self.current_steering_angle,  # delta 
+                self.speed_now,               # v (odom_cb에서 받음)
+                self.current_yaw,             # yaw (car_state_cb에서 받음)
+                self.current_yaw_rate,        # yawrate 
+                self.current_side_slip        # beta    
+            ])
+        except Exception as e:
+            self.get_logger().error(f"NMPC: Failed to create Dynamic State vector: {e}")
+            return 0.0, 0.0
+        
+        # 참조 경로 생성    
+        T_horizon = self.mpc_config.T # (40)
+        try:
+            # local_waypoint_cb의 인덱스 (0:x, 1:y, 2:speed, 6:psi_rad(yaw))
+            mpc_waypoints = self.waypoint_array_in_map[:, [0, 1, 6, 2]] 
+            path_inputs_4d = mpc_waypoints.T # (4 x N) 형태로 변환
+            
+            num_waypoints = path_inputs_4d.shape[1] # 현재 경로 점의 개수
+
+            if num_waypoints >= T_horizon + 1:
+                # [정상] 경로가 충분히 길면, T+1개만 잘라냄
+                ref_path_for_mpc = path_inputs_4d[:, :T_horizon + 1]
+            else:
+                # [핵심 수정] 경로가 (T+1)개보다 짧은 경우
+                self.get_logger().warn(f"NMPC: Path too short ({num_waypoints} < {T_horizon+1}). Padding last point.", throttle_duration_sec=5.0)
+                
+                # 모자란 개수 계산
+                num_padding = (T_horizon + 1) - num_waypoints
+                
+                # 마지막 점을 모자란 개수만큼 복제 (Padding)
+                last_point = path_inputs_4d[:, -1].reshape(4, 1)
+                padding_data = np.tile(last_point, (1, num_padding))
+                
+                # 원본 경로와 복제된 경로를 합쳐서 T+1개를 만듦
+                ref_path_for_mpc = np.hstack((path_inputs_4d, padding_data))
+
+        except Exception as e:
+            self.get_logger().error(f"NMPC: Failed to format/pad waypoints for MPC: {e}")
+            return 0.0, 0.0 # [안전장치 3]
+
+        # 4. "전문가"의 "Dynamic" 기능 호출
+        try:
+            steering_angle, speed = self.stmpc_controller.plan(
+                states_7dim,
+                ref_path_for_mpc
+            )
+            
+            # 5. 솔버가 해를 찾았는지 확인
+            if speed is None or steering_angle is None:
+                 self.get_logger().warn("Dynamic MPC failed to solve (returned None).", throttle_duration_sec=1.0)
+                 return 0.0, 0.0 
+                 
+            self.waypoint_safety_counter = 0 # (안전 로직 리셋)
+            
+            # 터미널에 로그를 출력하여 작동 확인 (1초에 한 번씩만)
+            self.get_logger().info(f"[Dynamic MPC Test OK] Speed: {speed:.2f}, Steer: {steering_angle:.3f}", throttle_duration_sec=1.0)
+
+            self.current_steering_angle = steering_angle
+            
+            return speed, steering_angle # [유일한 성공 경로]
+            
+        except Exception as e:
+            # CVXPY가 실패하거나 넘파이 배열 크기가 안 맞으면 여기로 옴
+            self.get_logger().error(f"NMPC planner.plan() FAILED: {e}", throttle_duration_sec=1.0)
+            return 0.0, 0.0 
+
     #############
     # MAIN LOOP #
     #############
@@ -616,6 +757,9 @@ class Controller(Node):
             speed, steer = self.pp_cycle()
         elif self.mode == "FTG":
             speed, steer = self.ftg_cycle()
+        #추가!
+        elif self.mode == "STMPC" :
+            speed, steer = self.stmpc_cycle()
 
         ack_msg = AckermannDriveStamped()
         ack_msg.header.stamp = self.get_clock().now().to_msg()
