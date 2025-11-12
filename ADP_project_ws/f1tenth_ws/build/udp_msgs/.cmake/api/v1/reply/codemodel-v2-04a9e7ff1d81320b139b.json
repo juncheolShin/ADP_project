@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-c1609ca058ddbbaf6020.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "udp_msgs__py",
+					"jsonFile" : "directory-udp_msgs__py-5d5c225cde3327d146e2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/misys/f1tenth_ws/build/udp_msgs/udp_msgs__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "udp_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_udp_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_udp_msgs_egg-e186b0f3faf888ef725f.json",
+					"name" : "ament_cmake_python_build_udp_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_udp_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_udp_msgs-86c675d21b0fe58e40a7.json",
+					"name" : "ament_cmake_python_copy_udp_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs-45ad3b51bfc43e5e9add.json",
+					"name" : "udp_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__cpp-87f34fe239130b63ed60.json",
+					"name" : "udp_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "udp_msgs__py::@e43730b3c19699b1c157",
+					"jsonFile" : "target-udp_msgs__py-13f53e0b9ca259a743ad.json",
+					"name" : "udp_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_generator_c-25709fd4624927dc744c.json",
+					"name" : "udp_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_generator_py-4bc7ef263b4ac0ca47c4.json",
+					"name" : "udp_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_c-ef2cc5ea6ab146586737.json",
+					"name" : "udp_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_c__pyext-6bd324b6f994a85e5345.json",
+					"name" : "udp_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_cpp-92168887953619d2a6ac.json",
+					"name" : "udp_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_fastrtps_c-358f02dceb96ee2c77d5.json",
+					"name" : "udp_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_fastrtps_c__pyext-1e1fda5c0fde35b0e6ed.json",
+					"name" : "udp_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_fastrtps_cpp-b043c39090a925b9fd30.json",
+					"name" : "udp_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_introspection_c-179ba2046429b8ea04fd.json",
+					"name" : "udp_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_introspection_c__pyext-45a83b8ac1645b7edf6b.json",
+					"name" : "udp_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs__rosidl_typesupport_introspection_cpp-1b024bb1df64264ed391.json",
+					"name" : "udp_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_msgs_uninstall-0cf97d4d52ea57e7ba33.json",
+					"name" : "udp_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-fd5c9e8a0a7b17ac6403.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/udp_msgs",
+		"source" : "/home/misys/f1tenth_ws/src/udp_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

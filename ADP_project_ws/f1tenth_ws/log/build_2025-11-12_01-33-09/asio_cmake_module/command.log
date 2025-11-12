@@ -1,0 +1,6 @@
+Invoking command in '/home/misys/f1tenth_ws/build/asio_cmake_module': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/transport_drivers/asio_cmake_module -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/asio_cmake_module
+Invoked command in '/home/misys/f1tenth_ws/build/asio_cmake_module' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/transport_drivers/asio_cmake_module -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/asio_cmake_module
+Invoking command in '/home/misys/f1tenth_ws/build/asio_cmake_module': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/asio_cmake_module -- -j16 -l16
+Invoked command in '/home/misys/f1tenth_ws/build/asio_cmake_module' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/asio_cmake_module -- -j16 -l16
+Invoking command in '/home/misys/f1tenth_ws/build/asio_cmake_module': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/asio_cmake_module
+Invoked command in '/home/misys/f1tenth_ws/build/asio_cmake_module' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/asio_cmake_module

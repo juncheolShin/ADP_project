@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-3399af59ebb470f3f4ae.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "diagnostic_common_diagnostics",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_diagnostic_common_diagnostics_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_diagnostic_common_diagnostics_egg-ff368dccf03f16e8b9f5.json",
+					"name" : "ament_cmake_python_build_diagnostic_common_diagnostics_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_diagnostic_common_diagnostics::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_diagnostic_common_diagnostics-ada88c4c9e4719aba218.json",
+					"name" : "ament_cmake_python_copy_diagnostic_common_diagnostics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "diagnostic_common_diagnostics_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diagnostic_common_diagnostics_uninstall-dbbfea5fcc46a5adf789.json",
+					"name" : "diagnostic_common_diagnostics_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-e8e5448229c10e274c48.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/diagnostic_common_diagnostics",
+		"source" : "/home/misys/f1tenth_ws/src/diagnostics/diagnostic_common_diagnostics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

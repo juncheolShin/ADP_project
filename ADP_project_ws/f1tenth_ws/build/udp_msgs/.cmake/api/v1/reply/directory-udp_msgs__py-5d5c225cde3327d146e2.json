@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "udp_msgs__py",
+		"source" : "/home/misys/f1tenth_ws/build/udp_msgs/udp_msgs__py"
+	}
+}

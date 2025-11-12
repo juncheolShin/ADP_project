@@ -1,0 +1,8 @@
+{
+  "package_name": "udp_msgs",
+  "non_idl_tuples": [
+    "/home/misys/f1tenth_ws/src/udp_msgs:msg/UdpPacket.msg",
+    "/home/misys/f1tenth_ws/src/udp_msgs:srv/UdpSend.srv",
+    "/home/misys/f1tenth_ws/src/udp_msgs:srv/UdpSocket.srv"
+  ]
+}

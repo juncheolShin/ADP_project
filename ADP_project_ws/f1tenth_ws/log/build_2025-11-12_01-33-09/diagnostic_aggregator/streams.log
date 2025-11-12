@@ -1,0 +1,150 @@
+[0.092s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_aggregator -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_aggregator
+[2.697s] -- The C compiler identification is GNU 11.4.0
+[2.697s] -- The CXX compiler identification is GNU 11.4.0
+[2.697s] -- Detecting C compiler ABI info
+[2.697s] -- Detecting C compiler ABI info - done
+[2.697s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.699s] -- Detecting C compile features
+[2.699s] -- Detecting C compile features - done
+[2.699s] -- Detecting CXX compiler ABI info
+[2.699s] -- Detecting CXX compiler ABI info - done
+[2.699s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.699s] -- Detecting CXX compile features
+[2.700s] -- Detecting CXX compile features - done
+[2.700s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.700s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.700s] -- Found diagnostic_msgs: 4.9.0 (/opt/ros/humble/share/diagnostic_msgs/cmake)
+[2.700s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.700s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.700s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.700s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.701s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.701s] -- Found pluginlib: 5.1.2 (/opt/ros/humble/share/pluginlib/cmake)
+[2.701s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[2.701s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.701s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.701s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[2.701s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[2.701s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[2.703s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.703s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[2.704s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[2.704s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.706s] -- Looking for pthread.h
+[2.706s] -- Looking for pthread.h - found
+[2.706s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.707s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.707s] -- Found Threads: TRUE  
+[2.707s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.775s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.870s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[2.870s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.870s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.870s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.870s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.909s] -- Found PythonExtra: .so  
+[3.017s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.017s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/misys/f1tenth_ws/src/diagnostics/diagnostic_aggregator/include>
+[3.017s] -- Configured cppcheck exclude dirs and/or files: 
+[3.026s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.026s] -- Configured cpplint exclude dirs and/or files: 
+[3.027s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.030s] -- Added test 'lint_cmake' to check CMake code style
+[3.033s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[3.041s] -- Added test 'uncrustify' to check C / C++ code style
+[3.041s] -- Configured uncrustify additional arguments: 
+[3.043s] -- Added test 'xmllint' to check XML markup files
+[3.062s] -- Configuring done
+[3.129s] -- Generating done
+[3.154s] -- Build files have been written to: /home/misys/f1tenth_ws/build/diagnostic_aggregator
+[3.178s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_aggregator -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_aggregator
+[3.181s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_aggregator -- -j16 -l16
+[3.303s] [  8%] Building CXX object CMakeFiles/diagnostic_aggregator.dir/src/status_item.cpp.o
+[3.304s] [ 16%] Building CXX object CMakeFiles/diagnostic_aggregator.dir/src/aggregator.cpp.o
+[3.309s] [ 25%] Building CXX object CMakeFiles/diagnostic_aggregator.dir/src/analyzer_group.cpp.o
+[3.326s] [ 25%] Built target ament_cmake_python_copy_diagnostic_aggregator
+[3.329s] [ 33%] Building CXX object CMakeFiles/add_analyzer.dir/src/add_analyzer.cpp.o
+[4.034s] running egg_info
+[4.036s] creating diagnostic_aggregator.egg-info
+[4.037s] writing diagnostic_aggregator.egg-info/PKG-INFO
+[4.037s] writing dependency_links to diagnostic_aggregator.egg-info/dependency_links.txt
+[4.039s] writing top-level names to diagnostic_aggregator.egg-info/top_level.txt
+[4.039s] writing manifest file 'diagnostic_aggregator.egg-info/SOURCES.txt'
+[4.046s] reading manifest file 'diagnostic_aggregator.egg-info/SOURCES.txt'
+[4.049s] writing manifest file 'diagnostic_aggregator.egg-info/SOURCES.txt'
+[4.131s] [ 33%] Built target ament_cmake_python_build_diagnostic_aggregator_egg
+[24.329s] [ 41%] Linking CXX executable add_analyzer
+[25.015s] [ 41%] Built target add_analyzer
+[45.426s] [ 50%] Linking CXX shared library libdiagnostic_aggregator.so
+[47.867s] [ 50%] Built target diagnostic_aggregator
+[47.979s] [ 58%] Building CXX object CMakeFiles/diagnostic_aggregator_analyzers.dir/src/generic_analyzer.cpp.o
+[47.982s] [ 66%] Building CXX object CMakeFiles/aggregator_node.dir/src/aggregator_node.cpp.o
+[47.982s] [ 75%] Building CXX object CMakeFiles/diagnostic_aggregator_analyzers.dir/src/discard_analyzer.cpp.o
+[47.985s] [ 83%] Building CXX object CMakeFiles/diagnostic_aggregator_analyzers.dir/src/ignore_analyzer.cpp.o
+[63.732s] [ 91%] Linking CXX executable aggregator_node
+[64.556s] [ 91%] Built target aggregator_node
+[68.453s] [100%] Linking CXX shared library libdiagnostic_aggregator_analyzers.so
+[69.385s] [100%] Built target diagnostic_aggregator_analyzers
+[69.413s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_aggregator -- -j16 -l16
+[69.417s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_aggregator
+[69.441s] -- Install configuration: ""
+[69.441s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/diagnostic_aggregator/aggregator_node
+[69.442s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/diagnostic_aggregator/aggregator_node" to ""
+[69.442s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/diagnostic_aggregator/add_analyzer
+[69.447s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/diagnostic_aggregator/add_analyzer" to ""
+[69.448s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/libdiagnostic_aggregator.so
+[69.479s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/libdiagnostic_aggregator.so" to ""
+[69.479s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/libdiagnostic_aggregator_analyzers.so
+[69.482s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/libdiagnostic_aggregator_analyzers.so" to ""
+[69.483s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include
+[69.484s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator
+[69.485s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/ignore_analyzer.hpp
+[69.487s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/visibility_control.hpp
+[69.488s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/analyzer_group.hpp
+[69.490s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/status_item.hpp
+[69.491s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/other_analyzer.hpp
+[69.491s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/generic_analyzer.hpp
+[69.491s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/discard_analyzer.hpp
+[69.492s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/analyzer.hpp
+[69.493s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/aggregator.hpp
+[69.494s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/include/diagnostic_aggregator/generic_analyzer_base.hpp
+[69.496s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/pythonpath.sh
+[69.497s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/pythonpath.dsv
+[69.499s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator-4.4.6-py3.10.egg-info
+[69.499s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator-4.4.6-py3.10.egg-info/top_level.txt
+[69.501s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator-4.4.6-py3.10.egg-info/PKG-INFO
+[69.502s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator-4.4.6-py3.10.egg-info/SOURCES.txt
+[69.503s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator-4.4.6-py3.10.egg-info/dependency_links.txt
+[69.505s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator
+[69.509s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator/__init__.py
+[69.609s] Listing '/home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator'...
+[69.609s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_aggregator/local/lib/python3.10/dist-packages/diagnostic_aggregator/__init__.py'...
+[69.624s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/example.launch.py
+[69.634s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/lib/diagnostic_aggregator/example_pub.py
+[69.636s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/example_analyzers.yaml
+[69.638s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/example_add_analyzers.yaml
+[69.639s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/plugin_description.xml
+[69.641s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/library_path.sh
+[69.641s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/library_path.dsv
+[69.642s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/ament_index/resource_index/package_run_dependencies/diagnostic_aggregator
+[69.644s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/ament_index/resource_index/parent_prefix_path/diagnostic_aggregator
+[69.646s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/ament_prefix_path.sh
+[69.647s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/ament_prefix_path.dsv
+[69.649s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/path.sh
+[69.649s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/environment/path.dsv
+[69.650s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/local_setup.bash
+[69.651s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/local_setup.sh
+[69.653s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/local_setup.zsh
+[69.654s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/local_setup.dsv
+[69.656s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/package.dsv
+[69.657s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/ament_index/resource_index/packages/diagnostic_aggregator
+[69.658s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/ament_index/resource_index/diagnostic_aggregator__pluginlib__plugin/diagnostic_aggregator
+[69.658s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/diagnostic_aggregatorTargetsExport.cmake
+[69.660s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/diagnostic_aggregatorTargetsExport-noconfig.cmake
+[69.661s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/ament_cmake_export_targets-extras.cmake
+[69.662s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/ament_cmake_export_include_directories-extras.cmake
+[69.663s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/ament_cmake_export_dependencies-extras.cmake
+[69.664s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/diagnostic_aggregatorConfig.cmake
+[69.664s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/cmake/diagnostic_aggregatorConfig-version.cmake
+[69.665s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_aggregator/share/diagnostic_aggregator/package.xml
+[69.673s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_aggregator

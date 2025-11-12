@@ -1,0 +1,84 @@
+[1.429s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_remote_logging -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_remote_logging
+[2.686s] -- The C compiler identification is GNU 11.4.0
+[2.686s] -- The CXX compiler identification is GNU 11.4.0
+[2.686s] -- Detecting C compiler ABI info
+[2.686s] -- Detecting C compiler ABI info - done
+[2.686s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.686s] -- Detecting C compile features
+[2.687s] -- Detecting C compile features - done
+[2.687s] -- Detecting CXX compiler ABI info
+[2.687s] -- Detecting CXX compiler ABI info - done
+[2.687s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.687s] -- Detecting CXX compile features
+[2.687s] -- Detecting CXX compile features - done
+[2.687s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.688s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.696s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[2.769s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.848s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.848s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.848s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.884s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.010s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.017s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.253s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.340s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.463s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.489s] -- Looking for pthread.h
+[3.705s] -- Looking for pthread.h - found
+[3.708s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.957s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.959s] -- Found Threads: TRUE  
+[4.180s] -- Found rclcpp_components: 16.0.15 (/opt/ros/humble/share/rclcpp_components/cmake)
+[4.353s] -- Found diagnostic_msgs: 4.9.0 (/opt/ros/humble/share/diagnostic_msgs/cmake)
+[4.755s] -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.81.0")  
+[4.756s] -- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[4.778s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[5.157s] -- Configuring done
+[5.301s] -- Generating done
+[5.353s] -- Build files have been written to: /home/misys/f1tenth_ws/build/diagnostic_remote_logging
+[5.393s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_remote_logging -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_remote_logging
+[5.394s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_remote_logging -- -j16 -l16
+[5.650s] [ 10%] Building CXX object CMakeFiles/influx.dir/rclcpp_components/node_main_influx.cpp.o
+[5.670s] [ 20%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[5.670s] [ 30%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[5.680s] [ 40%] Building CXX object CMakeFiles/influx_component.dir/src/influxdb.cpp.o
+[12.448s] [ 50%] Linking CXX static library libgtest_main.a
+[12.626s] [ 50%] Built target gtest_main
+[24.859s] [ 60%] Linking CXX static library libgtest.a
+[25.011s] [ 60%] Built target gtest
+[25.060s] [ 70%] Linking CXX executable influx
+[25.592s] [ 70%] Built target influx
+[57.711s] [ 80%] Linking CXX shared library libinflux_component.so
+[59.576s] [ 80%] Built target influx_component
+[59.659s] [ 90%] Building CXX object CMakeFiles/unit_tests.dir/test/influx_line_protocol.cpp.o
+[72.531s] [100%] Linking CXX executable unit_tests
+[73.141s] [100%] Built target unit_tests
+[73.172s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_remote_logging -- -j16 -l16
+[73.176s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_remote_logging
+[73.195s] -- Install configuration: ""
+[73.195s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/lib/diagnostic_remote_logging/influx
+[73.198s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_remote_logging/lib/diagnostic_remote_logging/influx" to ""
+[73.199s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/lib/libinflux_component.so
+[73.221s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_remote_logging/lib/libinflux_component.so" to ""
+[73.222s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/ament_index/resource_index/package_run_dependencies/diagnostic_remote_logging
+[73.223s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/ament_index/resource_index/parent_prefix_path/diagnostic_remote_logging
+[73.224s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/environment/ament_prefix_path.sh
+[73.224s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/environment/ament_prefix_path.dsv
+[73.226s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/environment/path.sh
+[73.227s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/environment/path.dsv
+[73.234s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/local_setup.bash
+[73.234s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/local_setup.sh
+[73.234s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/local_setup.zsh
+[73.235s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/local_setup.dsv
+[73.235s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/package.dsv
+[73.235s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/ament_index/resource_index/packages/diagnostic_remote_logging
+[73.235s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/ament_index/resource_index/rclcpp_components/diagnostic_remote_logging
+[73.235s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/export_influx_componentExport.cmake
+[73.236s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/export_influx_componentExport-noconfig.cmake
+[73.236s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/ament_cmake_export_dependencies-extras.cmake
+[73.236s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/ament_cmake_export_targets-extras.cmake
+[73.236s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/diagnostic_remote_loggingConfig.cmake
+[73.236s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/cmake/diagnostic_remote_loggingConfig-version.cmake
+[73.237s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_remote_logging/share/diagnostic_remote_logging/package.xml
+[73.240s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_remote_logging

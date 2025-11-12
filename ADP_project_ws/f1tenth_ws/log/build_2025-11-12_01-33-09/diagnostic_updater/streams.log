@@ -1,0 +1,138 @@
+[0.084s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_updater': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_updater -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_updater
+[2.697s] -- The C compiler identification is GNU 11.4.0
+[2.698s] -- The CXX compiler identification is GNU 11.4.0
+[2.698s] -- Detecting C compiler ABI info
+[2.698s] -- Detecting C compiler ABI info - done
+[2.698s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.698s] -- Detecting C compile features
+[2.698s] -- Detecting C compile features - done
+[2.698s] -- Detecting CXX compiler ABI info
+[2.699s] -- Detecting CXX compiler ABI info - done
+[2.699s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.699s] -- Detecting CXX compile features
+[2.699s] -- Detecting CXX compile features - done
+[2.699s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.699s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.699s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[2.699s] -- Found diagnostic_msgs: 4.9.0 (/opt/ros/humble/share/diagnostic_msgs/cmake)
+[2.699s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.700s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.700s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.700s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.700s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.700s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[2.700s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.701s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.701s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[2.701s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.701s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.701s] -- Looking for pthread.h
+[2.701s] -- Looking for pthread.h - found
+[2.701s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.701s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.702s] -- Found Threads: TRUE  
+[2.702s] -- Found rclpy: 3.3.17 (/opt/ros/humble/share/rclpy/cmake)
+[2.702s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.987s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[5.326s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[5.328s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/misys/f1tenth_ws/src/diagnostics/diagnostic_updater/include>
+[5.328s] -- Configured cppcheck exclude dirs and/or files: 
+[5.333s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[5.333s] -- Configured cpplint exclude dirs and/or files: 
+[5.336s] -- Added test 'lint_cmake' to check CMake code style
+[5.339s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[5.344s] -- Added test 'uncrustify' to check C / C++ code style
+[5.345s] -- Configured uncrustify additional arguments: 
+[5.353s] -- Added test 'xmllint' to check XML markup files
+[5.359s] -- Configuring done
+[5.444s] -- Generating done
+[5.465s] -- Build files have been written to: /home/misys/f1tenth_ws/build/diagnostic_updater
+[5.489s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_updater' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_updater -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_updater
+[5.492s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_updater': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_updater -- -j16 -l16
+[5.807s] [ 16%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[5.808s] [ 25%] Building CXX object CMakeFiles/diagnostic_updater.dir/src/diagnostic_updater.cpp.o
+[5.808s] [  8%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[5.886s] [ 25%] Built target ament_cmake_python_copy_diagnostic_updater
+[8.643s] running egg_info
+[8.656s] creating diagnostic_updater.egg-info
+[8.660s] writing diagnostic_updater.egg-info/PKG-INFO
+[8.661s] writing dependency_links to diagnostic_updater.egg-info/dependency_links.txt
+[8.661s] writing top-level names to diagnostic_updater.egg-info/top_level.txt
+[8.661s] writing manifest file 'diagnostic_updater.egg-info/SOURCES.txt'
+[8.709s] reading manifest file 'diagnostic_updater.egg-info/SOURCES.txt'
+[8.710s] writing manifest file 'diagnostic_updater.egg-info/SOURCES.txt'
+[9.015s] [ 25%] Built target ament_cmake_python_build_diagnostic_updater_egg
+[14.987s] [ 33%] Linking CXX static library libgtest_main.a
+[15.178s] [ 33%] Built target gtest_main
+[24.182s] [ 41%] Linking CXX static library libgtest.a
+[24.186s] [ 41%] Built target gtest
+[24.271s] [ 50%] Building CXX object CMakeFiles/diagnostic_status_wrapper_test.dir/test/diagnostic_status_wrapper_test.cpp.o
+[27.521s] [ 58%] Linking CXX shared library libdiagnostic_updater.so
+[28.614s] [ 58%] Built target diagnostic_updater
+[28.727s] [ 66%] Building CXX object CMakeFiles/example.dir/src/example.cpp.o
+[28.753s] [ 75%] Building CXX object CMakeFiles/diagnostic_updater_test.dir/test/diagnostic_updater_test.cpp.o
+[29.526s] [ 83%] Linking CXX executable diagnostic_status_wrapper_test
+[30.913s] [ 83%] Built target diagnostic_status_wrapper_test
+[49.604s] [ 91%] Linking CXX executable example
+[49.926s] [100%] Linking CXX executable diagnostic_updater_test
+[50.596s] [100%] Built target example
+[50.978s] [100%] Built target diagnostic_updater_test
+[51.037s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_updater' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_updater -- -j16 -l16
+[51.039s] Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_updater': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_updater
+[51.075s] -- Install configuration: ""
+[51.078s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/lib/libdiagnostic_updater.so
+[51.088s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_updater/lib/libdiagnostic_updater.so" to ""
+[51.094s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/pythonpath.sh
+[51.094s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/pythonpath.dsv
+[51.095s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater-4.4.6-py3.10.egg-info
+[51.095s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater-4.4.6-py3.10.egg-info/top_level.txt
+[51.096s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater-4.4.6-py3.10.egg-info/PKG-INFO
+[51.098s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater-4.4.6-py3.10.egg-info/SOURCES.txt
+[51.098s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater-4.4.6-py3.10.egg-info/dependency_links.txt
+[51.103s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater
+[51.103s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_update_functions.py
+[51.107s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/example.py
+[51.111s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_publisher.py
+[51.111s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_diagnostic_updater.py
+[51.113s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/__init__.py
+[51.113s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_diagnostic_status_wrapper.py
+[51.415s] Listing '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/__init__.py'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_diagnostic_status_wrapper.py'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_diagnostic_updater.py'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_publisher.py'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/_update_functions.py'...
+[51.416s] Compiling '/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages/diagnostic_updater/example.py'...
+[51.447s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/lib/diagnostic_updater/example.py
+[51.447s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/lib/diagnostic_updater/example
+[51.452s] -- Set runtime path of "/home/misys/f1tenth_ws/install/diagnostic_updater/lib/diagnostic_updater/example" to ""
+[51.453s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include
+[51.454s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include/diagnostic_updater
+[51.455s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include/diagnostic_updater/publisher.hpp
+[51.460s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include/diagnostic_updater/update_functions.hpp
+[51.461s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include/diagnostic_updater/diagnostic_updater.hpp
+[51.466s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/include/diagnostic_updater/diagnostic_status_wrapper.hpp
+[51.470s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/library_path.sh
+[51.470s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/library_path.dsv
+[51.470s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/ament_index/resource_index/package_run_dependencies/diagnostic_updater
+[51.470s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/ament_index/resource_index/parent_prefix_path/diagnostic_updater
+[51.471s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/ament_prefix_path.sh
+[51.471s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/ament_prefix_path.dsv
+[51.471s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/path.sh
+[51.472s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/environment/path.dsv
+[51.479s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/local_setup.bash
+[51.479s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/local_setup.sh
+[51.480s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/local_setup.zsh
+[51.480s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/local_setup.dsv
+[51.480s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/package.dsv
+[51.487s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/ament_index/resource_index/packages/diagnostic_updater
+[51.488s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/diagnostic_updaterTargetsExport.cmake
+[51.488s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/diagnostic_updaterTargetsExport-noconfig.cmake
+[51.488s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/ament_cmake_export_targets-extras.cmake
+[51.489s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/ament_cmake_export_include_directories-extras.cmake
+[51.496s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/ament_cmake_export_libraries-extras.cmake
+[51.496s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/ament_cmake_export_dependencies-extras.cmake
+[51.497s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/diagnostic_updaterConfig.cmake
+[51.497s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake/diagnostic_updaterConfig-version.cmake
+[51.497s] -- Installing: /home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/package.xml
+[51.521s] Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_updater' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_updater

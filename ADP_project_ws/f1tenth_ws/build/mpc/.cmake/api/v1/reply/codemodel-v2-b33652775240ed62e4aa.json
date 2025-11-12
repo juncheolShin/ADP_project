@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b88dfe3c9a88d89117e9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "mpc",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_mpc_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_mpc_egg-9522a55d6797d8f6673b.json",
+					"name" : "ament_cmake_python_build_mpc_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_mpc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_mpc-21fa3b4b27ff8eea03a9.json",
+					"name" : "ament_cmake_python_copy_mpc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_mpc_setup::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_mpc_setup-584a12756064d69a1c18.json",
+					"name" : "ament_cmake_python_copy_mpc_setup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mpc_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mpc_uninstall-830ddd6ce44ad69b5f1a.json",
+					"name" : "mpc_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-91f0e141ef0f1e5b50e3.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/mpc",
+		"source" : "/home/misys/f1tenth_ws/src/mpc"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

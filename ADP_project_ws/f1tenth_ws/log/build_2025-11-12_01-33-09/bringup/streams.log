@@ -1,0 +1,46 @@
+[3.821s] Invoking command in '/home/misys/f1tenth_ws/src/bringup': PYTHONPATH=/home/misys/f1tenth_ws/build/bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bringup build --build-base /home/misys/f1tenth_ws/build/bringup/build install --record /home/misys/f1tenth_ws/build/bringup/install.log --single-version-externally-managed install_data
+[4.548s] running egg_info
+[4.550s] creating ../../build/bringup/bringup.egg-info
+[4.551s] writing ../../build/bringup/bringup.egg-info/PKG-INFO
+[4.552s] writing dependency_links to ../../build/bringup/bringup.egg-info/dependency_links.txt
+[4.553s] writing entry points to ../../build/bringup/bringup.egg-info/entry_points.txt
+[4.553s] writing requirements to ../../build/bringup/bringup.egg-info/requires.txt
+[4.553s] writing top-level names to ../../build/bringup/bringup.egg-info/top_level.txt
+[4.554s] writing manifest file '../../build/bringup/bringup.egg-info/SOURCES.txt'
+[4.560s] reading manifest file '../../build/bringup/bringup.egg-info/SOURCES.txt'
+[4.561s] adding license file 'LICENSE'
+[4.566s] writing manifest file '../../build/bringup/bringup.egg-info/SOURCES.txt'
+[4.566s] running build
+[4.566s] running build_py
+[4.566s] creating /home/misys/f1tenth_ws/build/bringup/build
+[4.575s] creating /home/misys/f1tenth_ws/build/bringup/build/lib
+[4.575s] creating /home/misys/f1tenth_ws/build/bringup/build/lib/bringup
+[4.575s] copying bringup/__init__.py -> /home/misys/f1tenth_ws/build/bringup/build/lib/bringup
+[4.576s] running install
+[4.576s] running install_lib
+[4.576s] creating /home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages/bringup
+[4.576s] copying /home/misys/f1tenth_ws/build/bringup/build/lib/bringup/__init__.py -> /home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages/bringup
+[4.577s] byte-compiling /home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages/bringup/__init__.py to __init__.cpython-310.pyc
+[4.578s] running install_data
+[4.579s] creating /home/misys/f1tenth_ws/install/bringup/share/ament_index
+[4.579s] creating /home/misys/f1tenth_ws/install/bringup/share/ament_index/resource_index
+[4.579s] creating /home/misys/f1tenth_ws/install/bringup/share/ament_index/resource_index/packages
+[4.579s] copying resource/bringup -> /home/misys/f1tenth_ws/install/bringup/share/ament_index/resource_index/packages
+[4.579s] copying package.xml -> /home/misys/f1tenth_ws/install/bringup/share/bringup
+[4.580s] creating /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.583s] copying launch/sim_pf_mpc_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.584s] copying launch/sim_drive_legacy_revised_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.586s] copying launch/sim_pf_pp_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.586s] copying launch/sim_test_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.586s] copying launch/sim_drive_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.586s] copying launch/sim_drive_legacy_launch.py -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.587s] creating /home/misys/f1tenth_ws/install/bringup/share/bringup/config
+[4.587s] copying config/mux.yaml -> /home/misys/f1tenth_ws/install/bringup/share/bringup/config
+[4.587s] copying config/joy_teleop.yaml -> /home/misys/f1tenth_ws/install/bringup/share/bringup/config
+[4.587s] copying launch/pf_pp.rviz -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.587s] copying launch/pf_mpc.rviz -> /home/misys/f1tenth_ws/install/bringup/share/bringup/launch
+[4.588s] running install_egg_info
+[4.597s] Copying ../../build/bringup/bringup.egg-info to /home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages/bringup-0.0.0-py3.10.egg-info
+[4.601s] running install_scripts
+[4.647s] writing list of installed files to '/home/misys/f1tenth_ws/build/bringup/install.log'
+[4.720s] Invoked command in '/home/misys/f1tenth_ws/src/bringup' returned '0': PYTHONPATH=/home/misys/f1tenth_ws/build/bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/misys/f1tenth_ws/install/bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/bringup build --build-base /home/misys/f1tenth_ws/build/bringup/build install --record /home/misys/f1tenth_ws/build/bringup/install.log --single-version-externally-managed install_data

@@ -1,0 +1,100 @@
+[0.131s] Invoking command in '/home/misys/f1tenth_ws/build/ackermann_mux': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/ackermann_mux -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/ackermann_mux
+[0.536s] -- The C compiler identification is GNU 11.4.0
+[0.854s] -- The CXX compiler identification is GNU 11.4.0
+[0.881s] -- Detecting C compiler ABI info
+[1.272s] -- Detecting C compiler ABI info - done
+[1.315s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.329s] -- Detecting C compile features
+[1.329s] -- Detecting C compile features - done
+[1.349s] -- Detecting CXX compiler ABI info
+[1.893s] -- Detecting CXX compiler ABI info - done
+[1.959s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.964s] -- Detecting CXX compile features
+[1.971s] -- Detecting CXX compile features - done
+[1.984s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[3.056s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.700s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[4.028s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[4.082s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[4.169s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[4.255s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.360s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.677s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[4.722s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[5.251s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[5.441s] -- Found FastRTPS: /opt/ros/humble/include  
+[5.690s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.765s] -- Looking for pthread.h
+[6.220s] -- Looking for pthread.h - found
+[6.221s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[6.708s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[6.714s] -- Found Threads: TRUE  
+[7.120s] -- Found ackermann_msgs: 2.0.2 (/home/misys/f1tenth_ws/install/ackermann_msgs/share/ackermann_msgs/cmake)
+[7.225s] -- Found diagnostic_updater: 4.4.6 (/home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake)
+[7.395s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[8.090s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[8.250s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[8.271s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[8.277s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[8.278s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[8.278s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[8.433s] -- Found PythonExtra: .so  
+[8.570s] -- Added test 'xmllint' to check XML markup files
+[8.575s] -- Added test 'copyright' to check source files copyright and LICENSE
+[8.617s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[8.618s] -- Configured cppcheck include dirs: /home/misys/f1tenth_ws/src/ackermann_mux/include
+[8.618s] -- Configured cppcheck exclude dirs and/or files: 
+[8.660s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[8.661s] -- Configured cpplint exclude dirs and/or files: 
+[8.666s] -- Added test 'flake8' to check Python code syntax and style conventions
+[8.673s] -- Added test 'lint_cmake' to check CMake code style
+[8.678s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[8.695s] -- Added test 'uncrustify' to check C / C++ code style
+[8.696s] -- Configured uncrustify additional arguments: 
+[8.705s] -- Configuring done
+[8.742s] -- Generating done
+[8.754s] -- Build files have been written to: /home/misys/f1tenth_ws/build/ackermann_mux
+[8.792s] Invoked command in '/home/misys/f1tenth_ws/build/ackermann_mux' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/ackermann_mux -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/ackermann_mux
+[8.796s] Invoking command in '/home/misys/f1tenth_ws/build/ackermann_mux': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/ackermann_mux -- -j16 -l16
+[9.063s] [ 25%] Building CXX object CMakeFiles/ackermann_mux.dir/src/ackermann_mux.cpp.o
+[51.127s] [ 50%] Building CXX object CMakeFiles/ackermann_mux.dir/src/ackermann_mux_diagnostics.cpp.o
+[65.359s] [ 75%] Building CXX object CMakeFiles/ackermann_mux.dir/src/ackermann_mux_node.cpp.o
+[72.870s] [100%] Linking CXX executable ackermann_mux
+[74.462s] [100%] Built target ackermann_mux
+[74.493s] Invoked command in '/home/misys/f1tenth_ws/build/ackermann_mux' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/ackermann_mux -- -j16 -l16
+[74.498s] Invoking command in '/home/misys/f1tenth_ws/build/ackermann_mux': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/ackermann_mux
+[74.519s] -- Install configuration: ""
+[74.520s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/lib/ackermann_mux/ackermann_mux
+[74.535s] -- Set runtime path of "/home/misys/f1tenth_ws/install/ackermann_mux/lib/ackermann_mux/ackermann_mux" to ""
+[74.535s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/launch
+[74.536s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/launch/ackermann_mux_launch.py
+[74.536s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/config
+[74.537s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/config/ackermann_mux_locks.yaml
+[74.537s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/config/joystick.yaml
+[74.538s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/config/ackermann_mux_topics.yaml
+[74.539s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include
+[74.539s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux
+[74.540s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/params_helpers.hpp
+[74.540s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/ackermann_mux_diagnostics_status.hpp
+[74.540s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/topic_handle.hpp
+[74.541s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/ackermann_mux_diagnostics.hpp
+[74.541s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/ackermann_mux.hpp
+[74.541s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/include/ackermann_mux/utils.hpp
+[74.542s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ament_index/resource_index/package_run_dependencies/ackermann_mux
+[74.543s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ament_index/resource_index/parent_prefix_path/ackermann_mux
+[74.544s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/environment/ament_prefix_path.sh
+[74.545s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/environment/ament_prefix_path.dsv
+[74.546s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/environment/path.sh
+[74.546s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/environment/path.dsv
+[74.547s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/local_setup.bash
+[74.548s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/local_setup.sh
+[74.548s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/local_setup.zsh
+[74.549s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/local_setup.dsv
+[74.550s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/package.dsv
+[74.551s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ament_index/resource_index/packages/ackermann_mux
+[74.552s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/cmake/ament_cmake_export_include_directories-extras.cmake
+[74.552s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/cmake/ament_cmake_export_dependencies-extras.cmake
+[74.553s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/cmake/ackermann_muxConfig.cmake
+[74.554s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/cmake/ackermann_muxConfig-version.cmake
+[74.554s] -- Installing: /home/misys/f1tenth_ws/install/ackermann_mux/share/ackermann_mux/package.xml
+[74.560s] Invoked command in '/home/misys/f1tenth_ws/build/ackermann_mux' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/diagnostic_updater/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/diagnostic_updater/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/ackermann_mux

@@ -1,0 +1,108 @@
+[0.045s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/vesc/vesc_driver -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/vesc_driver
+[0.213s] -- The C compiler identification is GNU 11.4.0
+[0.361s] -- The CXX compiler identification is GNU 11.4.0
+[0.380s] -- Detecting C compiler ABI info
+[0.547s] -- Detecting C compiler ABI info - done
+[0.564s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.565s] -- Detecting C compile features
+[0.565s] -- Detecting C compile features - done
+[0.581s] -- Detecting CXX compiler ABI info
+[0.772s] -- Detecting CXX compiler ABI info - done
+[0.794s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.794s] -- Detecting CXX compile features
+[0.796s] -- Detecting CXX compile features - done
+[0.813s] -- Found ament_cmake_auto: 1.3.12 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[1.283s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.912s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.930s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.957s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.007s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.060s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.211s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.221s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.498s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[2.581s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.710s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.741s] -- Looking for pthread.h
+[2.932s] -- Looking for pthread.h - found
+[2.932s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.120s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.123s] -- Found Threads: TRUE  
+[3.459s] -- Found asio_cmake_module: 1.2.0 (/home/misys/f1tenth_ws/install/asio_cmake_module/share/asio_cmake_module/cmake)
+[3.463s] -- Found ASIO: /usr/include  
+[3.635s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.709s] In this package, headers install destination is set to `include` by ament_auto_package. It is recommended to install `include/vesc_driver` instead and will be the default behavior of ament_auto_package from ROS 2 Kilted Kaiju. On distributions before Kilted, ament_auto_package behaves the same way when you use USE_SCOPED_HEADER_INSTALL_DIR option.
+[3.723s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.732s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.733s] -- Configured cppcheck include dirs: /home/misys/f1tenth_ws/src/vesc/vesc_driver/include
+[3.734s] -- Configured cppcheck exclude dirs and/or files: 
+[3.740s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.740s] -- Configured cpplint exclude dirs and/or files: 
+[3.743s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.746s] -- Added test 'lint_cmake' to check CMake code style
+[3.749s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[3.756s] -- Added test 'uncrustify' to check C / C++ code style
+[3.756s] -- Configured uncrustify additional arguments: 
+[3.758s] -- Added test 'xmllint' to check XML markup files
+[3.772s] -- Configuring done
+[3.896s] -- Generating done
+[3.922s] -- Build files have been written to: /home/misys/f1tenth_ws/build/vesc_driver
+[3.947s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/vesc/vesc_driver -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/vesc_driver
+[3.951s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/vesc_driver -- -j16 -l16
+[4.055s] [ 10%] Building CXX object CMakeFiles/vesc_driver.dir/src/vesc_driver.cpp.o
+[4.056s] [ 20%] Building CXX object CMakeFiles/vesc_driver.dir/src/vesc_packet.cpp.o
+[4.058s] [ 30%] Building CXX object CMakeFiles/vesc_driver.dir/src/vesc_packet_factory.cpp.o
+[4.064s] [ 40%] Building CXX object CMakeFiles/vesc_driver.dir/src/vesc_interface.cpp.o
+[4.069s] [ 50%] Building CXX object CMakeFiles/vesc_driver_node.dir/rclcpp_components/node_main_vesc_driver_node.cpp.o
+[13.873s] [ 60%] Linking CXX executable vesc_driver_node
+[14.188s] [ 60%] Built target vesc_driver_node
+[27.462s] [ 70%] Linking CXX shared library libvesc_driver.so
+[28.586s] [ 70%] Built target vesc_driver
+[28.634s] [ 90%] Building CXX object CMakeFiles/vesc_device_namer.dir/src/vesc_device_namer.cpp.o
+[28.634s] [ 90%] Building CXX object CMakeFiles/vesc_device_namer.dir/src/vesc_device_uuid_lookup.cpp.o
+[29.902s] [100%] Linking CXX executable vesc_device_namer
+[30.399s] [100%] Built target vesc_device_namer
+[30.417s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/vesc_driver -- -j16 -l16
+[30.419s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/vesc_driver
+[30.434s] -- Install configuration: ""
+[30.434s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/lib/vesc_driver/vesc_driver_node
+[30.435s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_driver/lib/vesc_driver/vesc_driver_node" to ""
+[30.436s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include
+[30.436s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver
+[30.436s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/datatypes.hpp
+[30.436s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/crc.hpp
+[30.436s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/vesc_driver.hpp
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/vesc_device_uuid_lookup.hpp
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/vesc_packet_factory.hpp
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/vesc_interface.hpp
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/include/vesc_driver/vesc_packet.hpp
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/library_path.sh
+[30.437s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/library_path.dsv
+[30.438s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/lib/libvesc_driver.so
+[30.447s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_driver/lib/libvesc_driver.so" to ""
+[30.447s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/lib/vesc_driver/vesc_device_namer
+[30.447s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_driver/lib/vesc_driver/vesc_device_namer" to ""
+[30.448s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/launch
+[30.448s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/launch/vesc_driver_node.launch.py
+[30.448s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/params
+[30.448s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/params/vesc_config.yaml
+[30.448s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/ament_index/resource_index/package_run_dependencies/vesc_driver
+[30.449s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/ament_index/resource_index/parent_prefix_path/vesc_driver
+[30.449s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/ament_prefix_path.sh
+[30.449s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/ament_prefix_path.dsv
+[30.449s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/path.sh
+[30.450s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/environment/path.dsv
+[30.450s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/local_setup.bash
+[30.450s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/local_setup.sh
+[30.450s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/local_setup.zsh
+[30.451s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/local_setup.dsv
+[30.451s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/package.dsv
+[30.451s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/ament_index/resource_index/packages/vesc_driver
+[30.451s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/ament_index/resource_index/rclcpp_components/vesc_driver
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/cmake/ament_cmake_export_dependencies-extras.cmake
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/cmake/ament_cmake_export_libraries-extras.cmake
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/cmake/vesc_driverConfig.cmake
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/cmake/vesc_driverConfig-version.cmake
+[30.452s] -- Installing: /home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/package.xml
+[30.456s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/serial_driver:/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/serial_driver/lib:/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/vesc_driver

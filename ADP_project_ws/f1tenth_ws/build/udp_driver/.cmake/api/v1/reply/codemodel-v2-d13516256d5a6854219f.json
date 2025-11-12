@@ -1,0 +1,202 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-d4460a26f7992a854ea7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				},
+				{
+					"build" : "gtest",
+					"jsonFile" : "directory-gtest-a2408fe1a73b92c5e636.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "/opt/ros/humble/src/gtest_vendor",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "udp_driver",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "gtest",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "gtest::@0af4add9fe94340e763e",
+					"jsonFile" : "target-gtest-3827aee484d608586ee2.json",
+					"name" : "gtest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gtest_main::@0af4add9fe94340e763e",
+					"jsonFile" : "target-gtest_main-0a088ee5fb0f4a6d07b7.json",
+					"name" : "gtest_main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_udp_data::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_udp_data-197c5f31e01084dac5f1.json",
+					"name" : "test_udp_data",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_udp_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_udp_driver-6f704bb881251be935ea.json",
+					"name" : "test_udp_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_udp_driver_nodes::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_udp_driver_nodes-b82a9adf684a5ff6f67a.json",
+					"name" : "test_udp_driver_nodes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_udp_socket::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_udp_socket-9c51c83edea254030fba.json",
+					"name" : "test_udp_socket",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_bridge_node_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_bridge_node_exe-0ab1471003c172f2b5fe.json",
+					"name" : "udp_bridge_node_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_driver-aed8926898a784b91df7.json",
+					"name" : "udp_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_driver_nodes::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_driver_nodes-4646a87660729848e265.json",
+					"name" : "udp_driver_nodes",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_driver_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_driver_uninstall-9e99106574f11c7e46dc.json",
+					"name" : "udp_driver_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_receiver_node_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_receiver_node_exe-31f00a15f56847915ea6.json",
+					"name" : "udp_receiver_node_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "udp_sender_node_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-udp_sender_node_exe-ebea88ed8e9f36b7bd32.json",
+					"name" : "udp_sender_node_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-5a9d3ef407ceb9385f62.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/udp_driver",
+		"source" : "/home/misys/f1tenth_ws/src/transport_drivers/udp_driver"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

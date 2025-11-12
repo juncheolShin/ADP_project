@@ -1,0 +1,92 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build for humble
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found diagnostic_msgs: 4.9.0 (/opt/ros/humble/share/diagnostic_msgs/cmake)
+-- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found diagnostic_updater: 4.4.6 (/home/misys/f1tenth_ws/install/diagnostic_updater/share/diagnostic_updater/cmake)
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/misys/f1tenth_ws/src/diagnostics/self_test/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/misys/f1tenth_ws/build/self_test
+[  6%] Building CXX object CMakeFiles/run_selftest.dir/src/run_selftest.cpp.o
+[ 12%] Linking CXX executable run_selftest
+[ 12%] Built target run_selftest
+[ 18%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 25%] Linking CXX static library libgtest.a
+[ 25%] Built target gtest
+[ 31%] Building CXX object CMakeFiles/selftest_example.dir/example/selftest_example.cpp.o
+[ 37%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 43%] Linking CXX static library libgtest_main.a
+[ 43%] Built target gtest_main
+[ 50%] Building CXX object test/CMakeFiles/test_nominal_selftest.dir/nominal_selftest.cpp.o
+[ 56%] Building CXX object test/CMakeFiles/test_no_id_selftest.dir/no_id_selftest.cpp.o
+[ 62%] Linking CXX executable selftest_example
+[ 62%] Built target selftest_example
+[ 68%] Linking CXX executable test_nominal_selftest
+[ 75%] Linking CXX executable test_no_id_selftest
+[ 75%] Built target test_nominal_selftest
+[ 75%] Built target test_no_id_selftest
+[ 81%] Building CXX object test/CMakeFiles/test_error_selftest.dir/error_selftest.cpp.o
+[ 87%] Linking CXX executable test_error_selftest
+[ 87%] Built target test_error_selftest
+[ 93%] Building CXX object test/CMakeFiles/test_exception_selftest.dir/exception_selftest.cpp.o
+[100%] Linking CXX executable test_exception_selftest
+[100%] Built target test_exception_selftest
+-- Install configuration: ""
+-- Installing: /home/misys/f1tenth_ws/install/self_test/include
+-- Installing: /home/misys/f1tenth_ws/install/self_test/include/self_test
+-- Installing: /home/misys/f1tenth_ws/install/self_test/include/self_test/test_runner.hpp
+-- Installing: /home/misys/f1tenth_ws/install/self_test/lib/self_test/run_selftest
+-- Set runtime path of "/home/misys/f1tenth_ws/install/self_test/lib/self_test/run_selftest" to ""
+-- Installing: /home/misys/f1tenth_ws/install/self_test/lib/self_test/selftest_example
+-- Set runtime path of "/home/misys/f1tenth_ws/install/self_test/lib/self_test/selftest_example" to ""
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/ament_index/resource_index/package_run_dependencies/self_test
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/ament_index/resource_index/parent_prefix_path/self_test
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/environment/ament_prefix_path.sh
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/environment/ament_prefix_path.dsv
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/environment/path.sh
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/environment/path.dsv
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/local_setup.bash
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/local_setup.sh
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/local_setup.zsh
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/local_setup.dsv
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/package.dsv
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/ament_index/resource_index/packages/self_test
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/cmake/self_testConfig.cmake
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/cmake/self_testConfig-version.cmake
+-- Installing: /home/misys/f1tenth_ws/install/self_test/share/self_test/package.xml

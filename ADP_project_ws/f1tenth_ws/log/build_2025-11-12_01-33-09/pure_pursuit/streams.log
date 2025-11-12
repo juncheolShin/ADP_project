@@ -1,0 +1,131 @@
+[1.688s] Invoking command in '/home/misys/f1tenth_ws/build/pure_pursuit': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/pure_pursuit
+[1.908s] -- The C compiler identification is GNU 11.4.0
+[2.127s] -- The CXX compiler identification is GNU 11.4.0
+[2.142s] -- Detecting C compiler ABI info
+[3.193s] -- Detecting C compiler ABI info - done
+[3.193s] -- Check for working C compiler: /usr/bin/cc - skipped
+[3.193s] -- Detecting C compile features
+[3.193s] -- Detecting C compile features - done
+[3.193s] -- Detecting CXX compiler ABI info
+[3.193s] -- Detecting CXX compiler ABI info - done
+[3.194s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.194s] -- Detecting CXX compile features
+[3.194s] -- Detecting CXX compile features - done
+[3.198s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[3.292s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.667s] -- Found rclcpp: 16.0.15 (/opt/ros/humble/share/rclcpp/cmake)
+[3.900s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[3.924s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[4.068s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[4.077s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.149s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.385s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[4.395s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[4.681s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[4.800s] -- Found FastRTPS: /opt/ros/humble/include  
+[5.002s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.030s] -- Looking for pthread.h
+[5.232s] -- Looking for pthread.h - found
+[5.237s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[5.459s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[5.465s] -- Found Threads: TRUE  
+[5.643s] -- Found rclpy: 3.3.17 (/opt/ros/humble/share/rclpy/cmake)
+[5.649s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[5.698s] -- Found nav_msgs: 4.9.0 (/opt/ros/humble/share/nav_msgs/cmake)
+[5.755s] -- Found ackermann_msgs: 2.0.2 (/home/misys/f1tenth_ws/install/ackermann_msgs/share/ackermann_msgs/cmake)
+[5.786s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[5.853s] -- Found visualization_msgs: 4.9.0 (/opt/ros/humble/share/visualization_msgs/cmake)
+[5.935s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[5.980s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[5.990s] -- Found tf2_ros: 0.25.16 (/opt/ros/humble/share/tf2_ros/cmake)
+[6.602s] -- Configuring done
+[6.665s] -- Generating done
+[6.686s] -- Build files have been written to: /home/misys/f1tenth_ws/build/pure_pursuit
+[6.711s] Invoked command in '/home/misys/f1tenth_ws/build/pure_pursuit' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/pure_pursuit
+[6.716s] Invoking command in '/home/misys/f1tenth_ws/build/pure_pursuit': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/pure_pursuit -- -j16 -l16
+[7.068s] [ 25%] Building CXX object CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o
+[7.087s] [ 50%] Building CXX object CMakeFiles/waypoint_visualizer.dir/src/waypoint_visualizer.cpp.o
+[26.263s] In file included from /opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24,
+[26.263s]                  from /opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40,
+[26.263s]                  from /opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24,
+[26.263s]                  from /opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21,
+[26.264s]                  from /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155,
+[26.264s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer_interface.hpp:48,
+[26.265s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer.hpp:42,
+[26.265s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer.h:35,
+[26.265s]                  from /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/include/pure_pursuit.hpp:6,
+[26.265s]                  from /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:1:
+[26.265s] /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp: In member function ‘void PurePursuit::load_waypoints()’:
+[26.265s] /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:91:42: warning: format ‘%s’ expects argument of type ‘char*’, but argument 5 has type ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} [-Wformat=]
+[26.265s]    91 |         RCLCPP_ERROR(this->get_logger(), "Cannot Open CSV File: %s", waypoints_path);
+[26.266s]       |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+[26.266s] /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:91:66: note: format string is defined here
+[26.271s]    91 |         RCLCPP_ERROR(this->get_logger(), "Cannot Open CSV File: %s", waypoints_path);
+[26.271s]       |                                                                 ~^
+[26.271s]       |                                                                  |
+[26.272s]       |                                                                  char*
+[26.272s] In file included from /opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24,
+[26.272s]                  from /opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40,
+[26.272s]                  from /opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24,
+[26.273s]                  from /opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20,
+[26.273s]                  from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25,
+[26.273s]                  from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18,
+[26.273s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20,
+[26.273s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37,
+[26.274s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25,
+[26.274s]                  from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21,
+[26.277s]                  from /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155,
+[26.277s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer_interface.hpp:48,
+[26.278s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer.hpp:42,
+[26.278s]                  from /opt/ros/humble/include/tf2_ros/tf2_ros/buffer.h:35,
+[26.278s]                  from /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/include/pure_pursuit.hpp:6,
+[26.278s]                  from /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:1:
+[26.278s] /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:121:37: warning: format ‘%s’ expects argument of type ‘char*’, but argument 6 has type ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} [-Wformat=]
+[26.279s]   121 |     RCLCPP_INFO(this->get_logger(), "Finished loading %d waypoints from %s", num_waypoints, waypoints_path);
+[26.279s]       |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[26.279s] /home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit/src/pure_pursuit.cpp:121:74: note: format string is defined here
+[26.279s]   121 |     RCLCPP_INFO(this->get_logger(), "Finished loading %d waypoints from %s", num_waypoints, waypoints_path);
+[26.279s]       |                                                                         ~^
+[26.280s]       |                                                                          |
+[26.280s]       |                                                                          char*
+[29.179s] [ 75%] Linking CXX executable waypoint_visualizer
+[30.772s] [ 75%] Built target waypoint_visualizer
+[50.788s] [100%] Linking CXX executable pure_pursuit
+[52.274s] [100%] Built target pure_pursuit
+[52.303s] Invoked command in '/home/misys/f1tenth_ws/build/pure_pursuit' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/pure_pursuit -- -j16 -l16
+[52.306s] Invoking command in '/home/misys/f1tenth_ws/build/pure_pursuit': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/pure_pursuit
+[52.367s] -- Install configuration: ""
+[52.368s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit
+[52.368s] -- Set runtime path of "/home/misys/f1tenth_ws/install/pure_pursuit/lib/pure_pursuit/pure_pursuit" to ""
+[52.368s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/lib/pure_pursuit/waypoint_visualizer
+[52.368s] -- Set runtime path of "/home/misys/f1tenth_ws/install/pure_pursuit/lib/pure_pursuit/waypoint_visualizer" to ""
+[52.368s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/launch
+[52.369s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/launch/pure_pursuit.rviz
+[52.369s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/launch/pure_pursuit_launch.py
+[52.369s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/launch/sim_pure_pursuit_launch.py
+[52.369s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/launch/sim_pure_pursuit.rviz
+[52.370s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/config
+[52.370s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/config/sim_config.yaml
+[52.370s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/config/config.yaml
+[52.370s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/ament_index/resource_index/package_run_dependencies/pure_pursuit
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/ament_index/resource_index/parent_prefix_path/pure_pursuit
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.sh
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/environment/ament_prefix_path.dsv
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/environment/path.sh
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/environment/path.dsv
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/local_setup.bash
+[52.371s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/local_setup.sh
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/local_setup.zsh
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/local_setup.dsv
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/package.dsv
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/ament_index/resource_index/packages/pure_pursuit
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig.cmake
+[52.372s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/cmake/pure_pursuitConfig-version.cmake
+[52.373s] -- Installing: /home/misys/f1tenth_ws/install/pure_pursuit/share/pure_pursuit/package.xml
+[52.374s] Invoked command in '/home/misys/f1tenth_ws/build/pure_pursuit' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/pure_pursuit

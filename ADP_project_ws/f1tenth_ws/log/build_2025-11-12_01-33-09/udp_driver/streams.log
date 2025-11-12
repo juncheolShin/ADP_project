@@ -1,0 +1,128 @@
+[0.064s] Invoking command in '/home/misys/f1tenth_ws/build/udp_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/transport_drivers/udp_driver -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/udp_driver
+[0.417s] -- The C compiler identification is GNU 11.4.0
+[0.786s] -- The CXX compiler identification is GNU 11.4.0
+[0.833s] -- Detecting C compiler ABI info
+[1.262s] -- Detecting C compiler ABI info - done
+[1.332s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.336s] -- Detecting C compile features
+[1.337s] -- Detecting C compile features - done
+[1.350s] -- Detecting CXX compiler ABI info
+[1.804s] -- Detecting CXX compiler ABI info - done
+[1.839s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.839s] -- Detecting CXX compile features
+[1.840s] -- Detecting CXX compile features - done
+[1.852s] -- Found ament_cmake_auto: 1.3.12 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[2.541s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.730s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[3.773s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.845s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[3.931s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.066s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.480s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[4.507s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[5.037s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[5.197s] -- Found FastRTPS: /opt/ros/humble/include  
+[5.446s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.519s] -- Looking for pthread.h
+[5.821s] -- Looking for pthread.h - found
+[5.825s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[6.172s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[6.180s] -- Found Threads: TRUE  
+[6.508s] -- Found asio_cmake_module: 1.2.0 (/home/misys/f1tenth_ws/install/asio_cmake_module/share/asio_cmake_module/cmake)
+[6.512s] -- Found ASIO: /usr/include  
+[6.891s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[6.993s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[7.048s] In this package, headers install destination is set to `include` by ament_auto_package. It is recommended to install `include/udp_driver` instead and will be the default behavior of ament_auto_package from ROS 2 Kilted Kaiju. On distributions before Kilted, ament_auto_package behaves the same way when you use USE_SCOPED_HEADER_INSTALL_DIR option.
+[7.060s] -- Added test 'copyright' to check source files copyright and LICENSE
+[7.075s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[7.076s] -- Configured cppcheck include dirs: /home/misys/f1tenth_ws/src/transport_drivers/udp_driver/include
+[7.076s] -- Configured cppcheck exclude dirs and/or files: 
+[7.084s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[7.084s] -- Configured cpplint exclude dirs and/or files: 
+[7.089s] -- Added test 'lint_cmake' to check CMake code style
+[7.109s] -- Added test 'uncrustify' to check C / C++ code style
+[7.109s] -- Configured uncrustify additional arguments: 
+[7.110s] -- Added test 'xmllint' to check XML markup files
+[7.140s] -- Configuring done
+[7.499s] -- Generating done
+[7.569s] -- Build files have been written to: /home/misys/f1tenth_ws/build/udp_driver
+[7.604s] Invoked command in '/home/misys/f1tenth_ws/build/udp_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/transport_drivers/udp_driver -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/udp_driver
+[7.606s] Invoking command in '/home/misys/f1tenth_ws/build/udp_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/udp_driver -- -j16 -l16
+[7.897s] [  4%] Building CXX object CMakeFiles/udp_driver.dir/src/udp_socket.cpp.o
+[15.872s] [  8%] Building CXX object CMakeFiles/udp_driver.dir/src/udp_driver.cpp.o
+[19.924s] [ 12%] Linking CXX shared library libudp_driver.so
+[20.347s] [ 12%] Built target udp_driver
+[20.396s] [ 16%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[32.009s] [ 20%] Linking CXX static library libgtest.a
+[32.274s] [ 20%] Built target gtest
+[32.399s] [ 25%] Building CXX object CMakeFiles/udp_driver_nodes.dir/src/udp_receiver_node.cpp.o
+[53.922s] [ 29%] Building CXX object CMakeFiles/udp_driver_nodes.dir/src/udp_sender_node.cpp.o
+[72.487s] [ 33%] Linking CXX shared library libudp_driver_nodes.so
+[73.670s] [ 33%] Built target udp_driver_nodes
+[73.712s] [ 37%] Building CXX object CMakeFiles/udp_receiver_node_exe.dir/rclcpp_components/node_main_udp_receiver_node_exe.cpp.o
+[73.716s] [ 41%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[73.719s] [ 45%] Building CXX object CMakeFiles/udp_bridge_node_exe.dir/src/udp_bridge_node.cpp.o
+[73.728s] [ 50%] Building CXX object CMakeFiles/udp_sender_node_exe.dir/rclcpp_components/node_main_udp_sender_node_exe.cpp.o
+[75.658s] [ 54%] Linking CXX static library libgtest_main.a
+[75.744s] [ 54%] Built target gtest_main
+[75.810s] [ 58%] Building CXX object CMakeFiles/test_udp_socket.dir/test/test_udp_socket.cpp.o
+[75.820s] [ 62%] Building CXX object CMakeFiles/test_udp_data.dir/test/test_udp_data.cpp.o
+[75.835s] [ 66%] Building CXX object CMakeFiles/test_udp_driver_nodes.dir/test/test_udp_driver_nodes.cpp.o
+[75.835s] [ 70%] Building CXX object CMakeFiles/test_udp_driver.dir/test/test_udp_driver.cpp.o
+[82.547s] [ 75%] Linking CXX executable test_udp_data
+[82.707s] [ 79%] Linking CXX executable test_udp_socket
+[83.000s] [ 83%] Linking CXX executable udp_receiver_node_exe
+[83.085s] [ 87%] Linking CXX executable udp_sender_node_exe
+[83.179s] [ 87%] Built target test_udp_data
+[83.373s] [ 87%] Built target test_udp_socket
+[83.381s] [ 87%] Built target udp_sender_node_exe
+[83.390s] [ 87%] Built target udp_receiver_node_exe
+[85.517s] [ 91%] Linking CXX executable udp_bridge_node_exe
+[85.928s] [ 95%] Linking CXX executable test_udp_driver
+[86.135s] [ 95%] Built target udp_bridge_node_exe
+[86.393s] [ 95%] Built target test_udp_driver
+[99.442s] [100%] Linking CXX executable test_udp_driver_nodes
+[100.604s] [100%] Built target test_udp_driver_nodes
+[100.626s] Invoked command in '/home/misys/f1tenth_ws/build/udp_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/udp_driver -- -j16 -l16
+[100.630s] Invoking command in '/home/misys/f1tenth_ws/build/udp_driver': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/udp_driver
+[100.647s] -- Install configuration: ""
+[100.648s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_receiver_node_exe
+[100.649s] -- Set runtime path of "/home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_receiver_node_exe" to ""
+[100.650s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_sender_node_exe
+[100.650s] -- Set runtime path of "/home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_sender_node_exe" to ""
+[100.651s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include
+[100.652s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver
+[100.652s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver/udp_receiver_node.hpp
+[100.652s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver/visibility_control.hpp
+[100.652s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver/udp_sender_node.hpp
+[100.653s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver/udp_driver.hpp
+[100.653s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/include/udp_driver/udp_socket.hpp
+[100.653s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/library_path.sh
+[100.653s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/library_path.dsv
+[100.653s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/lib/libudp_driver.so
+[100.655s] -- Set runtime path of "/home/misys/f1tenth_ws/install/udp_driver/lib/libudp_driver.so" to ""
+[100.655s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/lib/libudp_driver_nodes.so
+[100.664s] -- Set runtime path of "/home/misys/f1tenth_ws/install/udp_driver/lib/libudp_driver_nodes.so" to ""
+[100.664s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_bridge_node_exe
+[100.664s] -- Set runtime path of "/home/misys/f1tenth_ws/install/udp_driver/lib/udp_driver/udp_bridge_node_exe" to ""
+[100.665s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/ament_index/resource_index/package_run_dependencies/udp_driver
+[100.666s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/ament_index/resource_index/parent_prefix_path/udp_driver
+[100.667s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/ament_prefix_path.sh
+[100.667s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/ament_prefix_path.dsv
+[100.668s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/path.sh
+[100.668s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/environment/path.dsv
+[100.669s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/local_setup.bash
+[100.669s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/local_setup.sh
+[100.670s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/local_setup.zsh
+[100.670s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/local_setup.dsv
+[100.671s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/package.dsv
+[100.671s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/ament_index/resource_index/packages/udp_driver
+[100.672s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/ament_index/resource_index/rclcpp_components/udp_driver
+[100.673s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/ament_cmake_export_dependencies-extras.cmake
+[100.673s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[100.674s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/ament_cmake_export_libraries-extras.cmake
+[100.674s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/udp_driver-extras.cmake
+[100.675s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/udp_driverConfig.cmake
+[100.675s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/cmake/udp_driverConfig-version.cmake
+[100.676s] -- Installing: /home/misys/f1tenth_ws/install/udp_driver/share/udp_driver/package.xml
+[100.681s] Invoked command in '/home/misys/f1tenth_ws/build/udp_driver' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/io_context:/home/misys/f1tenth_ws/install/udp_msgs:/home/misys/f1tenth_ws/install/asio_cmake_module:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/io_context/lib:/home/misys/f1tenth_ws/install/udp_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/udp_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/udp_driver

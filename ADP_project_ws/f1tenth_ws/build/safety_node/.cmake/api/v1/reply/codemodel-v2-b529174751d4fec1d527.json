@@ -1,0 +1,124 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-bcbf40a9822a163ba606.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "safety_node",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_safety_node_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_safety_node_egg-7ec087554633a4126380.json",
+					"name" : "ament_cmake_python_build_safety_node_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_safety_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_safety_node-d083b0b57e3b174eea78.json",
+					"name" : "ament_cmake_python_copy_safety_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_safety_node_setup::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_safety_node_setup-78bf7503942e016e7387.json",
+					"name" : "ament_cmake_python_copy_safety_node_setup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "safety_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-safety_node-26653fe6fb78edfd8f17.json",
+					"name" : "safety_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "safety_node_legacy::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-safety_node_legacy-a35321dea512c025b0ac.json",
+					"name" : "safety_node_legacy",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "safety_node_legacy_revised::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-safety_node_legacy_revised-70cfb7921a65381ed1ac.json",
+					"name" : "safety_node_legacy_revised",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "safety_node_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-safety_node_uninstall-284d4133bcc1e7638bbe.json",
+					"name" : "safety_node_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-ddf0c78bcbcf96abd44f.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/safety_node",
+		"source" : "/home/misys/f1tenth_ws/src/CL2-UWaterloo/safety_node"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

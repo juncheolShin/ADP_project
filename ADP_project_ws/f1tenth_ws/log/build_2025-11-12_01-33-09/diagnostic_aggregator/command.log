@@ -1,0 +1,6 @@
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_aggregator -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_aggregator
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_aggregator -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_aggregator
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_aggregator -- -j16 -l16
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_aggregator -- -j16 -l16
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_aggregator
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_aggregator' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_aggregator

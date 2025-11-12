@@ -1,0 +1,6 @@
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_remote_logging -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_remote_logging
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/diagnostics/diagnostic_remote_logging -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/diagnostic_remote_logging
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_remote_logging -- -j16 -l16
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/diagnostic_remote_logging -- -j16 -l16
+Invoking command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_remote_logging
+Invoked command in '/home/misys/f1tenth_ws/build/diagnostic_remote_logging' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/diagnostic_remote_logging

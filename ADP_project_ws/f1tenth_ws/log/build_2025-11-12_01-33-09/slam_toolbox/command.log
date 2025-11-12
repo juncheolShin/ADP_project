@@ -1,0 +1,6 @@
+Invoking command in '/home/misys/f1tenth_ws/build/slam_toolbox': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/slam_toolbox -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/slam_toolbox
+Invoked command in '/home/misys/f1tenth_ws/build/slam_toolbox' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/slam_toolbox -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/slam_toolbox
+Invoking command in '/home/misys/f1tenth_ws/build/slam_toolbox': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/slam_toolbox -- -j16 -l16
+Invoked command in '/home/misys/f1tenth_ws/build/slam_toolbox' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/slam_toolbox -- -j16 -l16
+Invoking command in '/home/misys/f1tenth_ws/build/slam_toolbox': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/slam_toolbox
+Invoked command in '/home/misys/f1tenth_ws/build/slam_toolbox' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/slam_toolbox

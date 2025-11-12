@@ -1,0 +1,3 @@
+/home/misys/f1tenth_ws/build/udp_msgs/rosidl_adapter/udp_msgs:msg/UdpPacket.idl
+/home/misys/f1tenth_ws/build/udp_msgs/rosidl_adapter/udp_msgs:srv/UdpSend.idl
+/home/misys/f1tenth_ws/build/udp_msgs/rosidl_adapter/udp_msgs:srv/UdpSocket.idl

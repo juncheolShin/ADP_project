@@ -1,0 +1,6 @@
+Invoking command in '/home/misys/f1tenth_ws/build/udp_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/udp_msgs -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/udp_msgs
+Invoked command in '/home/misys/f1tenth_ws/build/udp_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/misys/f1tenth_ws/src/udp_msgs -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/udp_msgs
+Invoking command in '/home/misys/f1tenth_ws/build/udp_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/udp_msgs -- -j16 -l16
+Invoked command in '/home/misys/f1tenth_ws/build/udp_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/misys/f1tenth_ws/build/udp_msgs -- -j16 -l16
+Invoking command in '/home/misys/f1tenth_ws/build/udp_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/udp_msgs
+Invoked command in '/home/misys/f1tenth_ws/build/udp_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/misys/f1tenth_ws/build/udp_msgs

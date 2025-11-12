@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b1ef82a987628e15b1d1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "pure_pursuit",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "pure_pursuit::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pure_pursuit-185cdef4987f5b097762.json",
+					"name" : "pure_pursuit",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pure_pursuit_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pure_pursuit_uninstall-1ff3444e63cdab49fd9c.json",
+					"name" : "pure_pursuit_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-adf921eed9fd46b5d54e.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "waypoint_visualizer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-waypoint_visualizer-f9e3890e78a3a2b9e3fb.json",
+					"name" : "waypoint_visualizer",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/pure_pursuit",
+		"source" : "/home/misys/f1tenth_ws/src/CL2-UWaterloo/pure_pursuit"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

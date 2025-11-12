@@ -1,0 +1,95 @@
+[0.049s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_ackermann': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/vesc/vesc_ackermann -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/vesc_ackermann
+[0.330s] -- The C compiler identification is GNU 11.4.0
+[0.522s] -- The CXX compiler identification is GNU 11.4.0
+[0.555s] -- Detecting C compiler ABI info
+[0.755s] -- Detecting C compiler ABI info - done
+[0.783s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.784s] -- Detecting C compile features
+[0.785s] -- Detecting C compile features - done
+[0.798s] -- Detecting CXX compiler ABI info
+[1.039s] -- Detecting CXX compiler ABI info - done
+[1.065s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.065s] -- Detecting CXX compile features
+[1.067s] -- Detecting CXX compile features - done
+[1.075s] -- Found ament_cmake_auto: 1.3.12 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[1.570s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.305s] -- Found rosidl_generator_c: 3.1.7 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.336s] -- Found rosidl_adapter: 3.1.7 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.363s] -- Found rosidl_generator_cpp: 3.1.7 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.402s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.460s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.952s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.970s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.428s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.616s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.977s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.045s] -- Looking for pthread.h
+[4.470s] -- Looking for pthread.h - found
+[4.477s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[4.905s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[4.917s] -- Found Threads: TRUE  
+[6.250s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[6.314s] In this package, headers install destination is set to `include` by ament_auto_package. It is recommended to install `include/vesc_ackermann` instead and will be the default behavior of ament_auto_package from ROS 2 Kilted Kaiju. On distributions before Kilted, ament_auto_package behaves the same way when you use USE_SCOPED_HEADER_INSTALL_DIR option.
+[6.334s] -- Added test 'copyright' to check source files copyright and LICENSE
+[6.341s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[6.342s] -- Configured cppcheck include dirs: /home/misys/f1tenth_ws/src/vesc/vesc_ackermann/include
+[6.343s] -- Configured cppcheck exclude dirs and/or files: 
+[6.348s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[6.350s] -- Configured cpplint exclude dirs and/or files: 
+[6.353s] -- Added test 'lint_cmake' to check CMake code style
+[6.361s] -- Added test 'uncrustify' to check C / C++ code style
+[6.361s] -- Configured uncrustify additional arguments: 
+[6.363s] -- Added test 'xmllint' to check XML markup files
+[6.374s] -- Configuring done
+[6.462s] -- Generating done
+[6.512s] -- Build files have been written to: /home/misys/f1tenth_ws/build/vesc_ackermann
+[6.572s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_ackermann' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/misys/f1tenth_ws/src/vesc/vesc_ackermann -DCMAKE_INSTALL_PREFIX=/home/misys/f1tenth_ws/install/vesc_ackermann
+[6.573s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_ackermann': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/vesc_ackermann -- -j16 -l16
+[6.911s] [ 14%] Building CXX object CMakeFiles/ackermann_to_vesc_node.dir/rclcpp_components/node_main_ackermann_to_vesc_node.cpp.o
+[6.911s] [ 28%] Building CXX object CMakeFiles/vesc_to_odom_node.dir/rclcpp_components/node_main_vesc_to_odom_node.cpp.o
+[6.911s] [ 42%] Building CXX object CMakeFiles/vesc_ackermann.dir/src/ackermann_to_vesc.cpp.o
+[6.944s] [ 57%] Building CXX object CMakeFiles/vesc_ackermann.dir/src/vesc_to_odom.cpp.o
+[22.152s] [ 71%] Linking CXX executable vesc_to_odom_node
+[22.869s] [ 71%] Built target vesc_to_odom_node
+[23.084s] [ 85%] Linking CXX executable ackermann_to_vesc_node
+[23.856s] [ 85%] Built target ackermann_to_vesc_node
+[49.065s] [100%] Linking CXX shared library libvesc_ackermann.so
+[51.098s] [100%] Built target vesc_ackermann
+[51.119s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_ackermann' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/misys/f1tenth_ws/build/vesc_ackermann -- -j16 -l16
+[51.121s] Invoking command in '/home/misys/f1tenth_ws/build/vesc_ackermann': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/vesc_ackermann
+[51.137s] -- Install configuration: ""
+[51.138s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/lib/vesc_ackermann/ackermann_to_vesc_node
+[51.138s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_ackermann/lib/vesc_ackermann/ackermann_to_vesc_node" to ""
+[51.139s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/lib/vesc_ackermann/vesc_to_odom_node
+[51.140s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_ackermann/lib/vesc_ackermann/vesc_to_odom_node" to ""
+[51.140s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/include
+[51.140s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/include/vesc_ackermann
+[51.141s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/include/vesc_ackermann/ackermann_to_vesc.hpp
+[51.141s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/include/vesc_ackermann/vesc_to_odom.hpp
+[51.141s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/library_path.sh
+[51.142s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/library_path.dsv
+[51.142s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/lib/libvesc_ackermann.so
+[51.160s] -- Set runtime path of "/home/misys/f1tenth_ws/install/vesc_ackermann/lib/libvesc_ackermann.so" to ""
+[51.161s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/launch
+[51.161s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/launch/ackermann_to_vesc_node.launch.xml
+[51.162s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/launch/vesc_to_odom_node.launch.xml
+[51.162s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/ament_index/resource_index/package_run_dependencies/vesc_ackermann
+[51.163s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/ament_index/resource_index/parent_prefix_path/vesc_ackermann
+[51.163s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/ament_prefix_path.sh
+[51.164s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/ament_prefix_path.dsv
+[51.164s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/path.sh
+[51.164s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/environment/path.dsv
+[51.165s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/local_setup.bash
+[51.165s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/local_setup.sh
+[51.166s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/local_setup.zsh
+[51.166s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/local_setup.dsv
+[51.166s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/package.dsv
+[51.167s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/ament_index/resource_index/packages/vesc_ackermann
+[51.167s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/ament_index/resource_index/rclcpp_components/vesc_ackermann
+[51.167s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/cmake/ament_cmake_export_dependencies-extras.cmake
+[51.167s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/cmake/ament_cmake_export_include_directories-extras.cmake
+[51.167s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/cmake/ament_cmake_export_libraries-extras.cmake
+[51.168s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/cmake/vesc_ackermannConfig.cmake
+[51.168s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/cmake/vesc_ackermannConfig-version.cmake
+[51.168s] -- Installing: /home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/package.xml
+[51.171s] Invoked command in '/home/misys/f1tenth_ws/build/vesc_ackermann' returned '0': AMENT_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/misys/f1tenth_ws/install/vesc_msgs:/home/misys/f1tenth_ws/install/ackermann_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/misys/f1tenth_ws/install/vesc_msgs/lib:/home/misys/f1tenth_ws/install/ackermann_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/misys/f1tenth_ws/install/vesc_msgs/local/lib/python3.10/dist-packages:/home/misys/f1tenth_ws/install/ackermann_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/misys/f1tenth_ws/build/vesc_ackermann

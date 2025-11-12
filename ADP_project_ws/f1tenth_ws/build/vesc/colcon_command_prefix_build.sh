@@ -1,0 +1,9 @@
+# generated from colcon_core/shell/template/command_prefix.sh.em
+. "/home/misys/f1tenth_ws/install/ackermann_msgs/share/ackermann_msgs/package.sh"
+. "/home/misys/f1tenth_ws/install/asio_cmake_module/share/asio_cmake_module/package.sh"
+. "/home/misys/f1tenth_ws/install/udp_msgs/share/udp_msgs/package.sh"
+. "/home/misys/f1tenth_ws/install/vesc_msgs/share/vesc_msgs/package.sh"
+. "/home/misys/f1tenth_ws/install/io_context/share/io_context/package.sh"
+. "/home/misys/f1tenth_ws/install/vesc_ackermann/share/vesc_ackermann/package.sh"
+. "/home/misys/f1tenth_ws/install/serial_driver/share/serial_driver/package.sh"
+. "/home/misys/f1tenth_ws/install/vesc_driver/share/vesc_driver/package.sh"

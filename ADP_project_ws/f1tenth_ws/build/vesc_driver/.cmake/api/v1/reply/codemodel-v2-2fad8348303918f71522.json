@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-a70821fd9be657c3563e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "vesc_driver",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-24edd14515ef61be7d7e.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vesc_device_namer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vesc_device_namer-d8406ae3957a6ceecb6b.json",
+					"name" : "vesc_device_namer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vesc_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vesc_driver-b84cfc97a8ddc705a9d8.json",
+					"name" : "vesc_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vesc_driver_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vesc_driver_node-acfb30dd0f5d8e21d958.json",
+					"name" : "vesc_driver_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vesc_driver_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vesc_driver_uninstall-bf0692f4a4f732849457.json",
+					"name" : "vesc_driver_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/misys/f1tenth_ws/build/vesc_driver",
+		"source" : "/home/misys/f1tenth_ws/src/vesc/vesc_driver"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
