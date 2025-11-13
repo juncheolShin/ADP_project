@@ -560,10 +560,17 @@ class Controller(Node):
                                                   waypoint_in_map[1],
                                                   speed,
                                                   min(waypoint.d_left, waypoint.d_right)/(waypoint.d_right + waypoint.d_left),
-                                                  waypoint.s_m, waypoint.kappa_radpm, waypoint.psi_rad, waypoint.ax_mps2]
+                                                  waypoint.s_m, waypoint.kappa_radpm, waypoint.psi_rad, waypoint.ax_mps2,
+                                                  waypoint.d_left,       # 8: d_left  <-- [신규]
+                                                  waypoint.d_right       # 9: d_right <-- [신규]
+                                                  ]
                                                 )
             else:
-                self.waypoint_list_in_map.append([waypoint_in_map[0], waypoint_in_map[1], speed, 0, waypoint.s_m, waypoint.kappa_radpm, waypoint.psi_rad, waypoint.ax_mps2])
+                self.waypoint_list_in_map.append([waypoint_in_map[0], waypoint_in_map[1], speed, 0, waypoint.s_m, 
+                                                  waypoint.kappa_radpm, waypoint.psi_rad, waypoint.ax_mps2,
+                                                  waypoint.d_left,       # 8: d_left  <-- [신규]
+                                                  waypoint.d_right       # 9: d_right <-- [신규]
+                                                  ])
         self.waypoint_array_in_map = np.array(self.waypoint_list_in_map)
         self.waypoint_safety_counter = 0
 
@@ -580,6 +587,7 @@ class Controller(Node):
         self.position_in_map_frenet = np.array([s,d,vs,vd])
 
     def l1_params_cb(self):
+        pass
         pass
 
     def state_cb(self, data):
@@ -697,25 +705,33 @@ class Controller(Node):
             # local_waypoint_cb의 인덱스 (0:x, 1:y, 2:speed, 6:psi_rad(yaw))
             mpc_waypoints = self.waypoint_array_in_map[:, [0, 1, 6, 2]] 
             path_inputs_4d = mpc_waypoints.T # (4 x N) 형태로 변환
+
+            # 2. 코리도 데이터 (2-dim: d_left, d_right)
+            corridor_waypoints = self.waypoint_array_in_map[:, [8, 9]]
+            corridor_inputs_2d = corridor_waypoints.T
             
             num_waypoints = path_inputs_4d.shape[1] # 현재 경로 점의 개수
 
             if num_waypoints >= T_horizon + 1:
                 # [정상] 경로가 충분히 길면, T+1개만 잘라냄
                 ref_path_for_mpc = path_inputs_4d[:, :T_horizon + 1]
+                corridor_data_for_mpc = corridor_inputs_2d[:, :T_horizon + 1] # 코리도도 자름
             else:
                 # [핵심 수정] 경로가 (T+1)개보다 짧은 경우
                 self.get_logger().warn(f"NMPC: Path too short ({num_waypoints} < {T_horizon+1}). Padding last point.", throttle_duration_sec=5.0)
                 
                 # 모자란 개수 계산
                 num_padding = (T_horizon + 1) - num_waypoints
-                
                 # 마지막 점을 모자란 개수만큼 복제 (Padding)
                 last_point = path_inputs_4d[:, -1].reshape(4, 1)
                 padding_data = np.tile(last_point, (1, num_padding))
-                
                 # 원본 경로와 복제된 경로를 합쳐서 T+1개를 만듦
                 ref_path_for_mpc = np.hstack((path_inputs_4d, padding_data))
+
+                # [코리도 데이터 패딩]
+                last_point_2d = corridor_inputs_2d[:, -1].reshape(2, 1)
+                padding_data_2d = np.tile(last_point_2d, (1, num_padding))
+                corridor_data_for_mpc = np.hstack((corridor_inputs_2d, padding_data_2d))
 
         except Exception as e:
             self.get_logger().error(f"NMPC: Failed to format/pad waypoints for MPC: {e}")
@@ -725,7 +741,8 @@ class Controller(Node):
         try:
             steering_angle, speed = self.stmpc_controller.plan(
                 states_7dim,
-                ref_path_for_mpc
+                ref_path_for_mpc,
+                corridor_data=corridor_data_for_mpc
             )
             
             # 5. 솔버가 해를 찾았는지 확인

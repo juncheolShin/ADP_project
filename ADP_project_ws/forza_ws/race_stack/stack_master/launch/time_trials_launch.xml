@@ -9,16 +9,16 @@
 
     <!-- python version -->
     <!-- launch controller manager -->
-    <!-- <include file="$(find-pkg-share controller)/launch/controller_launch.xml">
+    <include file="$(find-pkg-share controller)/launch/controller_launch.xml">
         <arg name="mode" value="$(var ctrl_algo)"/>
         <arg name="param_file" value="$(find-pkg-share stack_master)/config/state_machine_params.yaml"/>
         <arg name="mapping" value="False"/>
-    </include> -->
+    </include> 
 
     <!-- cpp version -->
-    <include file="$(find-pkg-share controller_cpp)/launch/controller_launch.xml">
+    <!-- <include file="$(find-pkg-share controller_cpp)/launch/controller_launch.xml">
         <arg name="mode" value="$(var ctrl_algo)"/>
-    </include>
+    </include> -->
 
     <!-- launch state machine -->
     <include file="$(find-pkg-share state_machine)/launch/state_machine_launch.xml">

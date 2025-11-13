@@ -44,30 +44,30 @@ class mpc_config:
     NXK: int = 4  # length of kinematic state vector: z = [x, y, v, yaw]
     NU: int = 2  # length of input vector: u = = [steering speed, acceleration]
     T: int = 40  # finite time horizon length
-    TK: int = 11  # finite time horizon length kinematic
+    TK: int = 8  # finite time horizon length kinematic
     R: list = field(
-        default_factory=lambda: diags([2.0, 0.01])
+        default_factory=lambda: diags([0.5, 0.01])
     )  # input cost matrix, penalty for inputs - [steering_speed, accel]
     Rd: list = field(
-        default_factory=lambda: diags([1.5, 0.01])
+        default_factory=lambda: diags([1.0, 0.01])
     )  # input difference cost matrix, penalty for change of inputs - [steering_speed, accel]
     Q: list = field(
-        default_factory=lambda: diags([32.0, 32.0, 0.0, 1.0, 0.5, 0.0, 0.0])
+        default_factory=lambda: diags([32.0, 32.0, 0.0, 5.0, 1.0, 0.0, 0.0])
     )  # state error cost matrix, for the the next (T) prediction time steps [x, y, delta, v, yaw, yaw-rate, beta]
     Qf: list = field(
-        default_factory=lambda: diags([32.0, 32.0, 0.0, 1.0, 0.5, 0.0, 0.0])
+        default_factory=lambda: diags([32.0, 32.0, 0.0, 5.0, 1.0, 0.0, 0.0])
     )  # final state error matrix, penalty  for the final state constraints: [x, y, delta, v, yaw, yaw-rate, beta]
     Rk: list = field(
-        default_factory=lambda: np.diag([0.01, 20.0])
+        default_factory=lambda: np.diag([0.01, 1.0])
     )  # input cost matrix, penalty for inputs - [accel, steering_speed]
     Rdk: list = field(
-        default_factory=lambda: np.diag([0.01, 20.0])
+        default_factory=lambda: np.diag([0.01, 0.5])
     )  # input difference cost matrix, penalty for change of inputs - [accel, steering_speed]
     Qk: list = field(
-        default_factory=lambda: np.diag([12.0, 12.0, 5.5, 13.0])
+        default_factory=lambda: np.diag([5.0, 5.0, 5.5, 13.0])
     )  # state error cost matrix, for the the next (T) prediction time steps [x, y, delta, v, yaw, yaw-rate, beta]
     Qfk: list = field(
-        default_factory=lambda: np.diag([12.0, 12.0, 5.5, 13.0])
+        default_factory=lambda: np.diag([5.0, 5.0, 5.5, 13.0])
     )  # final state error matrix, penalty  for the final state constraints: [x, y, delta, v, yaw, yaw-rate, beta]
     N_IND_SEARCH: int = 20  # Search index number
     DT: float = 0.025  # time step [s]
@@ -85,6 +85,7 @@ class mpc_config:
     MIN_SPEED: float = 0.0  # minimum backward speed [m/s]
     MAX_ACCEL: float = 2.5  # maximum acceleration [m/ss]
     V_KS: float = 2.0  # switching velocity from kinematic to dynamic [m/s]
+    SAFETY_MARGIN : float = 0.1 #(m)
 
 
 @dataclass
@@ -130,7 +131,7 @@ class STMPCPlanner:
         self.mpc_prob_init_kinematic()
         self.debug = debug
 
-    def plan(self, states, waypoints=None):
+    def plan(self, states, waypoints=None, corridor_data=None):
         """
         Planner plan function overload for Pure Pursuit, returns acutation based on current state
 
@@ -609,6 +610,14 @@ class STMPCPlanner:
         Q_block.append(self.config.Qf)
         Q_block = block_diag(tuple(Q_block))
 
+        # [신규] 코리도 제약 조건 파라미터 (저속용)
+        # 1. 법선 벡터 N = [nx, ny] (T+1 스텝)
+        self.corridor_N_d = cvxpy.Parameter((2, self.config.T + 1))
+        # 2. 좌측 경계 b_left
+        self.corridor_b_left_d = cvxpy.Parameter(self.config.T + 1)
+        # 3. 우측 경계 b_right
+        self.corridor_b_right_d = cvxpy.Parameter(self.config.T + 1)
+
         # Formulate and create the finite-horizon optimal control problem (objective function)
         # The FTOCP has the horizon of T timesteps
 
@@ -620,6 +629,17 @@ class STMPCPlanner:
 
         # Objective 3: Difference from one control input to the next control input weighted by Rd
         objective += cvxpy.quad_form(cvxpy.vec(cvxpy.diff(self.u, axis=1)), psd_wrap(Rd_block))
+
+        # [신규] 코리도 제약 조건 추가
+        x_pred_d = self.x[0:2, :] # 예측된 (x, y) 위치
+
+        # 좌측 제약: n^T * x <= b_left
+        dots_left_d = cvxpy.sum(cvxpy.multiply(self.corridor_N_d, x_pred_d), axis=0)
+        constraints += [ dots_left_d <= self.corridor_b_left_d ]
+        
+        # 우측 제약: (-n)^T * x <= b_right
+        dots_right_d = cvxpy.sum(cvxpy.multiply(-self.corridor_N_d, x_pred_d), axis=0)
+        constraints += [ dots_right_d <= self.corridor_b_right_d ]
 
         # Constraints 1: Calculate the future vehicle behavior/states based on the vehicle dynamics model matrices
         # Evaluate vehicle Dynamics for next T timesteps
@@ -730,6 +750,10 @@ class STMPCPlanner:
         objective = 0.0  # Objective value of the optimization problem, set to zero
         constraints = []  # Create constraints array
 
+        # [추가] 현재(직전) 제어 입력을 받을 파라미터 (가속도, 조향각)
+        self.u_prev = cvxpy.Parameter((self.config.NU,)) 
+        self.u_prev.value = np.zeros(self.config.NU)
+
         # Initialize reference vectors
         self.x0k = cvxpy.Parameter((self.config.NXK,))
         self.x0k.value = np.zeros((self.config.NXK,))
@@ -737,6 +761,14 @@ class STMPCPlanner:
         # Initialize reference trajectory parameter
         self.ref_traj_k = cvxpy.Parameter((self.config.NXK, self.config.TK + 1))
         self.ref_traj_k.value = np.zeros((self.config.NXK, self.config.TK + 1))
+
+        # [신규] 코리도 제약 조건 파라미터 (저속용)
+        # 1. 법선 벡터 N = [nx, ny] (T+1 스텝)
+        self.corridor_N_k = cvxpy.Parameter((2, self.config.TK + 1))
+        # 2. 좌측 경계 b_left
+        self.corridor_b_left_k = cvxpy.Parameter(self.config.TK + 1)
+        # 3. 우측 경계 b_right
+        self.corridor_b_right_k = cvxpy.Parameter(self.config.TK + 1)
 
         # Initializes block diagonal form of R = [R, R, ..., R] (NU*T, NU*T)
         R_block = block_diag(tuple([self.config.Rk] * self.config.TK))
@@ -760,6 +792,20 @@ class STMPCPlanner:
 
         # Objective 3: Difference from one control input to the next control input weighted by Rd
         objective += cvxpy.quad_form(cvxpy.vec(cvxpy.diff(self.uk, axis=1)), psd_wrap(Rd_block))
+
+        # (첫 번째 예측 입력 u[0] - 현재 입력 u_prev)의 변화량에도 Rdk 페널티 부과
+        objective += cvxpy.quad_form(self.uk[:, 0] - self.u_prev, self.config.Rdk)
+
+        # [신규] 코리도 제약 조건 추가
+        x_pred_k = self.xk[0:2, :] # 예측된 (x, y) 위치
+
+        # 좌측 제약: n^T * x <= b_left
+        dots_left_k = cvxpy.sum(cvxpy.multiply(self.corridor_N_k, x_pred_k), axis=0)
+        constraints += [ dots_left_k <= self.corridor_b_left_k ]
+        
+        # 우측 제약: (-n)^T * x <= b_right
+        dots_right_k = cvxpy.sum(cvxpy.multiply(-self.corridor_N_k, x_pred_k), axis=0)
+        constraints += [ dots_right_k <= self.corridor_b_right_k ]
 
         # Constraints 1: Calculate the future vehicle behavior/states based on the vehicle dynamics model matrices
         # Evaluate vehicle Dynamics for next T timesteps
@@ -821,6 +867,12 @@ class STMPCPlanner:
             <= self.config.MAX_DSTEER * self.config.DTK
         ]
 
+        # 첫 번째 스텝도 물리적인 조향 속도 한계(MAX_DSTEER)를 넘을 수 없음
+        constraints += [
+            cvxpy.abs(self.uk[1, 0] - self.u_prev[1]) 
+            <= self.config.MAX_DSTEER * self.config.DTK
+        ]
+
         # Create the constraints (upper and lower bounds of states and inputs) for the optimization problem
         constraints += [self.xk[:, 0] == self.x0k]
         constraints += [self.xk[2, :] <= self.config.MAX_SPEED]
@@ -832,7 +884,7 @@ class STMPCPlanner:
         # Optimization goal: minimize the objective function
         self.MPC_prob_k = cvxpy.Problem(cvxpy.Minimize(objective), constraints)
 
-    def mpc_prob_solve(self, ref_traj, state_predict, x0, oa, vehicle_params):
+    def mpc_prob_solve(self, ref_traj, state_predict, x0, oa, vehicle_params, corridor_data=None):
         """
         Solves MPC quadratic optimization problem initialized by mpc_prob_init using cvxpy, solver: OSQP
         Will be solved every iteration for control.
@@ -872,6 +924,47 @@ class STMPCPlanner:
         self.Annz.value = A_block.data
         self.Bnnz.value = B_block.data
         self.C_.value = C_block
+
+        if corridor_data is not None:
+            # 1. 데이터 추출 (corridor_data는 (2, N) 형태)
+            # ref_traj [0:x, 1:y, 2:v, 3:yaw]
+            x_ref = ref_traj[0, :]      # (TK+1) 크기
+            y_ref = ref_traj[1, :]      # (TK+1) 크기
+            yaw_ref = ref_traj[4, :]    # (TK+1) 크기
+            
+            # corridor_data는 T+1 길이로 왔을 수 있으니 TK+1만큼 잘라 씀
+            d_left = corridor_data[0, :self.config.TK + 1]
+            d_right = corridor_data[1, :self.config.TK + 1]
+
+            #안전마진 적용
+            margin = self.config.SAFETY_MARGIN
+            d_left_safe = d_left - margin
+            d_right_safe = d_right - margin
+
+            d_left_safe[d_left_safe < 0.0] = 0.0
+            d_right_safe[d_right_safe < 0.0] = 0.0
+            
+            # 2. 법선 벡터(Normal Vector) 및 경계(b) 계산
+            # 법선 벡터 n = [-sin(yaw), cos(yaw)] (도로 좌측 방향)
+            nx = -np.sin(yaw_ref)
+            ny = np.cos(yaw_ref)
+            
+            # 좌측 경계: b_left = n^T * p_left = n^T * (p_ref + n*d_left)
+            # (n^T * n = 1 이므로 단순화됨)
+            b_left = nx * x_ref + ny * y_ref + d_left_safe
+            
+            # 우측 경계: b_right = (-n)^T * p_right = (-n)^T * (p_ref - n*d_right)
+            b_right = -nx * x_ref - ny * y_ref + d_right_safe
+
+            # 3. CVXPY 파라미터 업데이트
+            self.corridor_N_d.value = np.vstack([nx, ny])
+            self.corridor_b_left_d.value = b_left
+            self.corridor_b_right_d.value = b_right
+        else:
+            # 코리도 데이터가 없으면, 제약 조건을 사실상 무력화 (아주 먼 곳으로)
+            self.corridor_N_d.value = np.zeros((2, self.config.T + 1))
+            self.corridor_b_left_d.value = np.full(self.config.T + 1, 1e5)
+            self.corridor_b_right_d.value = np.full(self.config.T + 1, 1e5)
 
         # Solve the optimization problem in CVXPY
         # Solver selections: cvxpy.OSQP; cvxpy.GUROBI
@@ -947,15 +1040,16 @@ class STMPCPlanner:
             mpc_beta,
         )
 
-    def mpc_prob_solve_kinematic(self, ref_traj, path_predict, x0):
+    def mpc_prob_solve_kinematic(self, ref_traj, path_predict, x0, od , current_steer, corridor_data=None):
         self.x0k.value = x0
+        self.u_prev.value = np.array([0.0, current_steer])
 
         A_block = []
         B_block = []
         C_block = []
         for t in range(self.config.TK):
             A, B, C = self.get_kinematic_model_matrix(
-                path_predict[2, t], path_predict[3, t], 0.0
+                path_predict[2, t], path_predict[3, t], od[t]
             )
             A_block.append(A)
             B_block.append(B)
@@ -970,6 +1064,48 @@ class STMPCPlanner:
         self.Ck_.value = C_block
 
         self.ref_traj_k.value = ref_traj
+
+        if corridor_data is not None:
+            # 1. 데이터 추출 (corridor_data는 (2, N) 형태)
+            # ref_traj [0:x, 1:y, 2:v, 3:yaw]
+            x_ref = ref_traj[0, :]      # (TK+1) 크기
+            y_ref = ref_traj[1, :]      # (TK+1) 크기
+            yaw_ref = ref_traj[3, :]    # (TK+1) 크기
+            
+            # corridor_data는 T+1 길이로 왔을 수 있으니 TK+1만큼 잘라 씀
+            d_left = corridor_data[0, :self.config.TK + 1]
+            d_right = corridor_data[1, :self.config.TK + 1]
+            
+            # 2. 법선 벡터(Normal Vector) 및 경계(b) 계산
+            # 법선 벡터 n = [-sin(yaw), cos(yaw)] (도로 좌측 방향)
+            nx = -np.sin(yaw_ref)
+            ny = np.cos(yaw_ref)
+
+            #안전마진 적용
+            margin = self.config.SAFETY_MARGIN
+            d_left_safe = d_left - margin
+            d_right_safe = d_right - margin
+
+            d_left_safe[d_left_safe < 0.0] = 0.0
+            d_right_safe[d_right_safe < 0.0] = 0.0
+            
+            # 좌측 경계: b_left = n^T * p_left = n^T * (p_ref + n*d_left)
+            # (n^T * n = 1 이므로 단순화됨)
+            b_left = nx * x_ref + ny * y_ref + d_left_safe
+            
+            # 우측 경계: b_right = (-n)^T * p_right = (-n)^T * (p_ref - n*d_right)
+            b_right = -nx * x_ref - ny * y_ref + d_right_safe
+
+            # 3. CVXPY 파라미터 업데이트
+            self.corridor_N_k.value = np.vstack([nx, ny])
+            self.corridor_b_left_k.value = b_left
+            self.corridor_b_right_k.value = b_right
+        else:
+            # 코리도 데이터가 없으면, 제약 조건을 사실상 무력화 (아주 먼 곳으로)
+            self.corridor_N_k.value = np.zeros((2, self.config.TK + 1))
+            self.corridor_b_left_k.value = np.full(self.config.TK + 1, 1e5)
+            self.corridor_b_right_k.value = np.full(self.config.TK + 1, 1e5)
+            
 
         # Solve the optimization problem in CVXPY
         # Solver selections: cvxpy.OSQP; cvxpy.GUROBI
@@ -992,7 +1128,7 @@ class STMPCPlanner:
 
         return oa, odelta, ox, oy, oyaw, ov
 
-    def linear_mpc_control(self, ref_path, x0, oa, od_v, vehicle_params):
+    def linear_mpc_control(self, ref_path, x0, oa, od_v, vehicle_params, corridor_data=None):
         """
         MPC contorl with updating operational point iteraitvely
         :param ref_path: reference trajectory in T steps
@@ -1039,7 +1175,7 @@ class STMPCPlanner:
             state_predict,
         )
 
-    def linear_mpc_control_kinematic(self, ref_path, x0, oa, od):
+    def linear_mpc_control_kinematic(self, ref_path, x0, oa, od , current_steer, corridor_data=None):
         """
         MPC contorl with updating operational point iteraitvely
         :param ref_path: reference trajectory in T steps
@@ -1059,12 +1195,12 @@ class STMPCPlanner:
 
         # Run the MPC optimization: Create and solve the optimization problem
         mpc_a, mpc_delta, mpc_x, mpc_y, mpc_yaw, mpc_v = self.mpc_prob_solve_kinematic(
-            ref_path, path_predict, x0
+            ref_path, path_predict, x0, od , current_steer
         )
 
         return mpc_a, mpc_delta, mpc_x, mpc_y, mpc_yaw, mpc_v, path_predict
 
-    def MPC_Control(self, vehicle_state, path, vehicle_params):
+    def MPC_Control(self, vehicle_state, path, vehicle_params, corridor_data=None):
         #글로벌 웨이포인트를 받아 로컬 경로를 생성하는 함수. 따로 로컬플래너가 있다면 주석 처리.
         # # Extract information about the trajectory that needs to be followed
         # cx = path[0]  # Trajectory x-Position
@@ -1093,7 +1229,11 @@ class STMPCPlanner:
         ref_path[1, :] = path[1, :]  # y
         # ref_path[2, :] = 0.0      # delta (목표 조향각은 0으로 둠)
         ref_path[3, :] = path[3, :]  # v (speed)
-        ref_path[4, :] = path[2, :]  # yaw
+
+        raw_ref_yaw = path[2, :]
+        combined_yaw = np.concatenate(([vehicle_state.yaw], raw_ref_yaw))
+        unwrapped_yaw = np.unwrap(combined_yaw)
+        ref_path[4, :] = unwrapped_yaw[1:] # yaw    
         # ref_path[5, :] = 0.0      # yaw rate (목표 요레이트는 0으로 둠)
         # ref_path[6, :] = 0.0      # beta (목표 슬립각은 0으로 둠)
 
@@ -1196,7 +1336,7 @@ class STMPCPlanner:
             oy,
         )
 
-    def MPC_Control_kinematic(self, vehicle_state, path):
+    def MPC_Control_kinematic(self, vehicle_state, path, corridor_data=None):
         #글로벌 웨이포인트를 받아 로컬 경로를 생성하는 함수. 따로 로컬플래너가 있다면 주석 처리.
         # # Extract information about the trajectory that needs to be followed
         # cx = path[0]  # Trajectory x-Position
@@ -1222,7 +1362,11 @@ class STMPCPlanner:
         ref_path[0, :] = path_k[0, :]  # x
         ref_path[1, :] = path_k[1, :]  # y
         ref_path[2, :] = path_k[3, :]  # v (speed)
-        ref_path[3, :] = path_k[2, :]  # yaw
+
+        raw_ref_yaw = path_k[2, :]
+        combined_yaw = np.concatenate(([vehicle_state.yaw], raw_ref_yaw))
+        unwrapped_yaw = np.unwrap(combined_yaw)
+        ref_path[3, :] = unwrapped_yaw[1:] # yaw
 
         x0 = [vehicle_state.x, vehicle_state.y, vehicle_state.v, vehicle_state.yaw]
 
@@ -1235,7 +1379,7 @@ class STMPCPlanner:
             oyaw,
             ov,
             state_predict,
-        ) = self.linear_mpc_control_kinematic(ref_path, x0, self.oa, self.odelta_v)
+        ) = self.linear_mpc_control_kinematic(ref_path, x0, self.oa, self.odelta_v , vehicle_state.delta)
 
         if self.odelta_v is not None:
             di, ai = self.odelta_v[0], self.oa[0]
