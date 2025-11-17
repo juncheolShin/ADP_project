@@ -22,7 +22,10 @@ try:
 except:
     pass
 
-from state_machine.transitions import dummy_transition, timetrials_transition, head_to_head_transition
+from state_machine.transitions import dummy_transition, timetrials_transition
+from state_machine.bt_transitions import behavior_tree_transition
+
+ head_to_head_transition
 from state_machine.state_types import StateType
 from state_machine.states import DefaultStateLogic
 from stack_master.parameter_event_handler import ParameterEventHandler
@@ -121,9 +124,11 @@ class StateMachine(Node):
         elif self.params.mode == 'timetrials':
             self.state_transition = timetrials_transition
         elif self.params.mode == 'head_to_head':
-            self.state_transition = head_to_head_transition
+            # 기존 FSM 스타일 대신 BT 기반 전이 함수 사용
+            self.state_transition = behavior_tree_transition
         else:
             raise NotImplementedError(f"Mode {self.params.mode} not recognized")
+
                 
         # choose what to do in the different states
         self.state_logic = DefaultStateLogic
