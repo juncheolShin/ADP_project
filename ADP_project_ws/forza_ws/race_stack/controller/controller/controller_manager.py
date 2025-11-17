@@ -3,6 +3,7 @@ import yaml
 import rclpy
 import math
 import numpy as np
+import time
 from scipy.spatial.transform import Rotation
 from rclpy.node import Node
 from rclpy.client import Client
@@ -682,6 +683,9 @@ class Controller(Node):
         if self.position_in_map is None or self.speed_now is None or self.waypoint_array_in_map is None:
             self.get_logger().warn("NMPC: Waiting for state or waypoint data...", throttle_duration_sec=1.0)
             return 0.0, 0.0 # 안전한 값 반환
+        
+        #계산시간 로그
+        start_time = time.time()
 
         # 2. "Dynamic" 모델이 요구하는 'State' 벡터 (7-dim) 생성
         # [x, y, delta, v, yaw, yawrate, beta]
@@ -711,7 +715,7 @@ class Controller(Node):
             corridor_inputs_2d = corridor_waypoints.T
             
             num_waypoints = path_inputs_4d.shape[1] # 현재 경로 점의 개수
-
+            
             if num_waypoints >= T_horizon + 1:
                 # [정상] 경로가 충분히 길면, T+1개만 잘라냄
                 ref_path_for_mpc = path_inputs_4d[:, :T_horizon + 1]
@@ -753,7 +757,10 @@ class Controller(Node):
             self.waypoint_safety_counter = 0 # (안전 로직 리셋)
             
             # 터미널에 로그를 출력하여 작동 확인 (1초에 한 번씩만)
-            self.get_logger().info(f"[Dynamic MPC Test OK] Speed: {speed:.2f}, Steer: {steering_angle:.3f}", throttle_duration_sec=1.0)
+            end_time = time.time()
+            duration = end_time - start_time
+            hz = 1.0 / duration if duration > 0 else 0  
+            self.get_logger().info(f"[Dynamic MPC Test OK] Speed: {speed:.2f}, Steer: {steering_angle:.3f} , Time : {duration*1000:.2f} ms ({hz:.2f} Hz)", throttle_duration_sec=1.0)
 
             self.current_steering_angle = steering_angle
             

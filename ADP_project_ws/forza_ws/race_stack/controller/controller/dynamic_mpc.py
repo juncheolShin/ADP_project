@@ -49,13 +49,13 @@ class mpc_config:
         default_factory=lambda: diags([0.5, 0.01])
     )  # input cost matrix, penalty for inputs - [steering_speed, accel]
     Rd: list = field(
-        default_factory=lambda: diags([1.0, 0.01])
+        default_factory=lambda: diags([0.3, 0.01])
     )  # input difference cost matrix, penalty for change of inputs - [steering_speed, accel]
     Q: list = field(
-        default_factory=lambda: diags([32.0, 32.0, 0.0, 5.0, 1.0, 0.0, 0.0])
+        default_factory=lambda: diags([16.0, 16.0, 0.0, 1.0, 5.0, 0.0, 0.0])
     )  # state error cost matrix, for the the next (T) prediction time steps [x, y, delta, v, yaw, yaw-rate, beta]
     Qf: list = field(
-        default_factory=lambda: diags([32.0, 32.0, 0.0, 5.0, 1.0, 0.0, 0.0])
+        default_factory=lambda: diags([16.0, 16.0, 0.0, 1.0, 5.0, 0.0, 0.0])
     )  # final state error matrix, penalty  for the final state constraints: [x, y, delta, v, yaw, yaw-rate, beta]
     Rk: list = field(
         default_factory=lambda: np.diag([0.01, 1.0])
@@ -85,7 +85,7 @@ class mpc_config:
     MIN_SPEED: float = 0.0  # minimum backward speed [m/s]
     MAX_ACCEL: float = 2.5  # maximum acceleration [m/ss]
     V_KS: float = 2.0  # switching velocity from kinematic to dynamic [m/s]
-    SAFETY_MARGIN : float = 0.1 #(m)
+    SAFETY_MARGIN : float = 0.01 #(m)
 
 
 @dataclass
