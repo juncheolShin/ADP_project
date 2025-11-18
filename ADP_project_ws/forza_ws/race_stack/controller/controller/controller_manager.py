@@ -141,6 +141,14 @@ class Controller(Node):
         #STMPC 추가
         elif self.mode == "STMPC" :
             self.get_logger().info("Initializing STMPC controller")
+            self.ema_alpha = 0.4 #노이즈 제거를 위한 ema 알파 
+            self.ema_x = None
+            self.ema_y = None
+            self.ema_yaw = None
+            self.ema_speed = None
+            self.ema_yaw_rate = None
+            self.ema_side_slip = None
+
             self.init_stmpc_controller()
             self.prioritize_dyn = False
         else:
@@ -687,18 +695,53 @@ class Controller(Node):
         #계산시간 로그
         start_time = time.time()
 
+        # [EMA 필터링 로직 추가]
+        # 2a. 콜백에서 업데이트된 'Raw' 상태 값을 가져옵니다.
+        x_raw = self.position_in_map[0][0]
+        y_raw = self.position_in_map[0][1]
+        yaw_raw = self.current_yaw
+        speed_raw = self.speed_now
+        yaw_rate_raw = self.current_yaw_rate
+        side_slip_raw = self.current_side_slip
+        
+        alpha = self.ema_alpha
+
+        # 2b. EMA 필터 적용 (첫 실행 시 초기화)
+        
+        if self.ema_x is None: # 초기화
+            self.ema_x = x_raw
+            self.ema_y = y_raw
+            self.ema_yaw = yaw_raw
+            self.ema_speed = speed_raw
+        else:
+            # 필터링(EMA) 공식 대신, Raw 값으로 "덮어쓰기"
+            self.ema_x = x_raw
+            self.ema_y = y_raw
+            self.ema_yaw = yaw_raw
+            self.ema_speed = speed_raw
+        
+        # 2c. [유지] 각속도(Yaw Rate)와 슬립각(Beta)만 EMA 필터링 (오실레이션 방지)
+        if self.ema_yaw_rate is None: # 초기화  
+            self.ema_yaw_rate = yaw_rate_raw
+            self.ema_side_slip = side_slip_raw
+        else:
+            # 이 두 값만 부드럽게 필터링합니다.
+            self.ema_yaw_rate = (alpha * yaw_rate_raw) + (1.0 - alpha) * self.ema_yaw_rate
+            self.ema_side_slip = (alpha * side_slip_raw) + (1.0 - alpha) * self.ema_side_slip
         # 2. "Dynamic" 모델이 요구하는 'State' 벡터 (7-dim) 생성
         # [x, y, delta, v, yaw, yawrate, beta]
         try:
             states_7dim = np.array([
-                self.position_in_map[0][0],   # x (car_state_cb에서 받음)
-                self.position_in_map[0][1],   # y (car_state_cb에서 받음)
-                self.current_steering_angle,  # delta 
-                self.speed_now,               # v (odom_cb에서 받음)
-                self.current_yaw,             # yaw (car_state_cb에서 받음)
-                self.current_yaw_rate,        # yawrate 
-                self.current_side_slip        # beta    
+                # [수정] Raw 값 대신 필터링된 EMA 값을 사용합니다.
+                self.ema_x,                   
+                self.ema_y,
+                self.current_steering_angle,  
+                self.ema_speed,               
+                self.ema_yaw,                
+                self.ema_yaw_rate,            
+                self.ema_side_slip            
             ])
+
         except Exception as e:
             self.get_logger().error(f"NMPC: Failed to create Dynamic State vector: {e}")
             return 0.0, 0.0
@@ -709,17 +752,13 @@ class Controller(Node):
             # local_waypoint_cb의 인덱스 (0:x, 1:y, 2:speed, 6:psi_rad(yaw))
             mpc_waypoints = self.waypoint_array_in_map[:, [0, 1, 6, 2]] 
             path_inputs_4d = mpc_waypoints.T # (4 x N) 형태로 변환
-
-            # 2. 코리도 데이터 (2-dim: d_left, d_right)
-            corridor_waypoints = self.waypoint_array_in_map[:, [8, 9]]
-            corridor_inputs_2d = corridor_waypoints.T
             
             num_waypoints = path_inputs_4d.shape[1] # 현재 경로 점의 개수
             
             if num_waypoints >= T_horizon + 1:
                 # [정상] 경로가 충분히 길면, T+1개만 잘라냄
                 ref_path_for_mpc = path_inputs_4d[:, :T_horizon + 1]
-                corridor_data_for_mpc = corridor_inputs_2d[:, :T_horizon + 1] # 코리도도 자름
+    
             else:
                 # [핵심 수정] 경로가 (T+1)개보다 짧은 경우
                 self.get_logger().warn(f"NMPC: Path too short ({num_waypoints} < {T_horizon+1}). Padding last point.", throttle_duration_sec=5.0)
@@ -732,21 +771,15 @@ class Controller(Node):
                 # 원본 경로와 복제된 경로를 합쳐서 T+1개를 만듦
                 ref_path_for_mpc = np.hstack((path_inputs_4d, padding_data))
 
-                # [코리도 데이터 패딩]
-                last_point_2d = corridor_inputs_2d[:, -1].reshape(2, 1)
-                padding_data_2d = np.tile(last_point_2d, (1, num_padding))
-                corridor_data_for_mpc = np.hstack((corridor_inputs_2d, padding_data_2d))
-
         except Exception as e:
             self.get_logger().error(f"NMPC: Failed to format/pad waypoints for MPC: {e}")
             return 0.0, 0.0 # [안전장치 3]
 
         # 4. "전문가"의 "Dynamic" 기능 호출
         try:
-            steering_angle, speed = self.stmpc_controller.plan(
+            steering_angle, speed , steering_angle_d1 = self.stmpc_controller.plan(
                 states_7dim,
                 ref_path_for_mpc,
-                corridor_data=corridor_data_for_mpc
             )
             
             # 5. 솔버가 해를 찾았는지 확인
@@ -762,7 +795,7 @@ class Controller(Node):
             hz = 1.0 / duration if duration > 0 else 0  
             self.get_logger().info(f"[Dynamic MPC Test OK] Speed: {speed:.2f}, Steer: {steering_angle:.3f} , Time : {duration*1000:.2f} ms ({hz:.2f} Hz)", throttle_duration_sec=1.0)
 
-            self.current_steering_angle = steering_angle
+            self.current_steering_angle = steering_angle_d1
             
             return speed, steering_angle # [유일한 성공 경로]
             

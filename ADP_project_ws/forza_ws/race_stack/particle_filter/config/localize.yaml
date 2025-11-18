@@ -34,4 +34,4 @@ map_server:
   ros__parameters:
     # assuming map file is in particle_filter/maps
     # map: 'teras_orig'
-    map: 'teras_orig'
+    map: 'small_hall'
