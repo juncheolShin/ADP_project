@@ -25,7 +25,7 @@ except:
 from state_machine.transitions import dummy_transition, timetrials_transition
 from state_machine.bt_transitions import behavior_tree_transition
 
- head_to_head_transition
+#head_to_head_transition <- 이 샛기 머임???
 from state_machine.state_types import StateType
 from state_machine.states import DefaultStateLogic
 from stack_master.parameter_event_handler import ParameterEventHandler

@@ -4,6 +4,7 @@ import rclpy
 import math
 import numpy as np
 import time
+import psutil
 from scipy.spatial.transform import Rotation
 from rclpy.node import Node
 from rclpy.client import Client
@@ -15,7 +16,7 @@ from f110_msgs.msg import (CarStateStamped, GapData, ObstacleArray, PidData, Wpn
 from geometry_msgs.msg import Point, PointStamped, Pose, PoseStamped
 from nav_msgs.msg import Odometry, Path
 from sensor_msgs.msg import Imu, LaserScan
-from std_msgs.msg import Float64, String
+from std_msgs.msg import Float64, String , Float32  
 from steering_lookup.lookup_steer_angle import LookupSteerAngle
 from visualization_msgs.msg import Marker, MarkerArray
 from frenet_conversion.frenet_converter import FrenetConverter
@@ -29,6 +30,7 @@ from tf_transformations import quaternion_from_euler
 from stack_master.parameter_event_handler import ParameterEventHandler
 
 from typing import List, Dict, Union
+from scipy.sparse import diags
 
 # This could be external utils functions
 def return_param_value(p: ParameterValue) -> Union[None, bool, int, str, float, List]:
@@ -92,6 +94,12 @@ class Controller(Node):
         self.get_logger().info(f"Using {self.LUT_name}")
         self.mode = self.get_parameter('mode').value
         self.mapping = self.get_parameter('mapping').value
+
+        #check CPU usages
+        self.process = psutil.Process(os.getpid())
+        self.cpu_pub = self.create_publisher(Float32, '/controller/cpu_usage', 10)
+        self.get_logger().info(f"CPU Monitoring Started for PID: {os.getpid()}")
+
 
         # get l1 parameres
         stack_master_path = get_package_share_directory('stack_master')
@@ -322,7 +330,6 @@ class Controller(Node):
             with open(config_path, 'r') as f:
                 car_params = yaml.safe_load(f)
                 self.wheelbase = car_params['vesc_to_odom_node']['ros__parameters']['wheelbase']
-        
 
         self.create_subscription(Imu,'/vesc/sensors/imu/raw', self.imu_cb, 10) # acceleration subscriber for steer change
         self.acc_now = np.zeros(10) # rolling buffer for acceleration
@@ -396,7 +403,64 @@ class Controller(Node):
             track_width=self.state_machine_track_width)
 
     def init_stmpc_controller(self) :
-        self.mpc_config = mpc_config()
+        # 1. YAML 파일 경로 설정
+        stack_master_path = get_package_share_directory('stack_master')
+        config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'mpc_params.yaml')
+
+        self.get_logger().info(f"Loading STMPC params from: {config_path}")
+
+        # 2. YAML 로드
+        with open(config_path, 'r') as f:
+            yaml_data = yaml.safe_load(f)
+            p = yaml_data['controller']['ros__parameters'] # 단축 이름 p 사용
+
+        config = mpc_config()
+
+        # 스칼라 값 (기본값 덮어쓰기)
+        config.NX = p.get('NX', 7)
+        config.NXK = p.get('NXK', 4)
+        config.NU = p.get('NU', 2)
+        config.T = p.get('T', 40)
+        config.TK = p.get('TK', 8)
+        config.DT = p.get('DT', 0.025)
+        config.DTK = p.get('DTK', 0.1)
+        config.dl = p.get('dl', 0.03)
+        config.dlk = p.get('dlk', 0.03)
+        config.LENGTH = p.get('LENGTH', 0.58)
+        config.WIDTH = p.get('WIDTH', 0.2032)
+        config.WB = p.get('WB', 0.33)
+        config.MIN_STEER = p.get('MIN_STEER', -0.4189)
+        config.MAX_STEER = p.get('MAX_STEER', 0.4189)
+        config.MAX_DSTEER = p.get('MAX_DSTEER', np.deg2rad(180.0))
+        config.MAX_STEER_V = p.get('MAX_STEER_V', 3.2)
+        config.MAX_SPEED = p.get('MAX_SPEED', 6.0)
+        config.MIN_SPEED = p.get('MIN_SPEED', 0.0)
+        config.MAX_ACCEL = p.get('MAX_ACCEL', 2.5)
+        config.V_KS = p.get('V_KS', 2.0)
+        config.N_IND_SEARCH = p.get('N_IND_SEARCH', 20)
+
+        # 행렬 가중치 변환 (List -> Diagonal Matrix)
+        # Dynamic MPC Weights
+        config.R = diags(p['R'])
+        config.Rd = diags(p['Rd'])
+        config.Q = diags(p['Q'])
+        config.Qf = diags(p['Qf'])
+        
+        # Kinematic MPC Weights
+        config.Rk = np.diag(p['Rk'])
+        config.Rdk = np.diag(p['Rdk'])
+        config.Qk = np.diag(p['Qk'])
+        config.Qfk = np.diag(p['Qfk'])
+
+        self.mpc_config = config
+
+         # --- 디버깅용 로그 추가 (이 부분을 확인하세요!) ---
+        self.get_logger().info(f"--- STMPC Parameters Verified ---")
+        self.get_logger().info(f"MAX_SPEED: {config.MAX_SPEED}")
+        self.get_logger().info(f"Horizon (T): {config.T}")
+        # sparse matrix 요소 출력 확인
+        self.get_logger().info(f"Q[0,0] (x-weight): {config.Q.toarray()[0][0]}")
+        self.get_logger().info(f"---------------------------------")
 
         # [핵심] 차량의 물리 파라미터를 설정합니다.
         # 이 값들은 'sim.yaml' 또는 차량 문서를 보고 "정확하게" 튜닝해야 합니다.
@@ -808,6 +872,7 @@ class Controller(Node):
     # MAIN LOOP #
     #############
     def control_loop(self):
+        current_cpu_usage = self.process.cpu_percent(interval=None)
         if self.mode == "MAP":
             speed, steer = self.map_cycle()
         elif self.mode == "PP":
@@ -817,6 +882,11 @@ class Controller(Node):
         #추가!
         elif self.mode == "STMPC" :
             speed, steer = self.stmpc_cycle()
+
+        cpu_msg = Float32()
+        cpu_msg.data = current_cpu_usage
+        self.cpu_pub.publish(cpu_msg)
+        self.get_logger().info(f"Mode: {self.mode} | CPU Usage: {current_cpu_usage:.1f}%" , throttle_duration_sec = 1.0)
 
         ack_msg = AckermannDriveStamped()
         ack_msg.header.stamp = self.get_clock().now().to_msg()
