@@ -85,7 +85,8 @@ class MAP_Controller:
 
         self.steer_lookup = LookupSteerAngle(self.LUT_name, logger_info)
     # main loop    
-    def main_loop(self, state, position_in_map, waypoint_array_in_map, speed_now, opponent, position_in_map_frenet, acc_now, track_length):
+    def main_loop(self, state, position_in_map, waypoint_array_in_map, speed_now, opponent, position_in_map_frenet, acc_now, track_length , 
+    override_lookahead = None):
         # Updating parameters from manager
         self.state = state
         self.position_in_map = position_in_map
@@ -103,7 +104,22 @@ class MAP_Controller:
         # calculate lateral error and lateral error norm (lateral_error, self.lateral_error_list, self.lat_e_norm)
         lat_e_norm, lateral_error = self.calc_lateral_error_norm()
 
-        L1_point, L1_distance = self.calc_L1_point(lateral_error)
+        # -----------------------------------------------------------------
+        # [수정 2] 룩어헤드 거리 결정 로직 추가
+        # -----------------------------------------------------------------
+        if override_lookahead is not None:
+            # Case A: 학습 모드 (외부에서 랜덤 파라미터로 계산된 거리 주입)
+            current_lookahead = override_lookahead
+            current_lookahead = np.clip(current_lookahead, self.t_clip_min, self.t_clip_max)
+
+        else:
+            # Case B: 일반 주행 (기존 YAML 설정값 사용: m*v + q)
+            current_lookahead = (self.speed_lookahead * self.speed_now) + self.q_l1
+            current_lookahead = np.clip(current_lookahead, self.t_clip_min, self.t_clip_max)
+        # -----------------------------------------------------------------
+
+        # [수정 3] 결정된 lookahead 거리를 calc_L1_point에 인자로 전달
+        L1_point, L1_distance = self.calc_L1_point(lateral_error, current_lookahead)
 
         ### LONGITUDINAL CONTROL ###
         self.speed_command = self.calc_speed_command(v, lat_e_norm)
@@ -191,7 +207,7 @@ class MAP_Controller:
         self.curr_steering_angle = steering_angle
         return steering_angle
 
-    def calc_L1_point(self, lateral_error):
+    def calc_L1_point(self, lateral_error, L1_distance):
         """
         The purpose of this function is to calculate the L1 point and distance
         
@@ -213,7 +229,7 @@ class MAP_Controller:
             self.curvature_waypoints = np.mean(abs(self.waypoint_array_in_map[self.idx_nearest_waypoint:,5]))
 
         # calculate L1 guidance
-        L1_distance = self.q_l1 + self.speed_now *self.m_l1
+        #L1_distance = self.q_l1 + self.speed_now *self.m_l1
 
         # clip lower bound to avoid ultraswerve when far away from mincurv
         lower_bound = max(self.t_clip_min, np.sqrt(2)*lateral_error)

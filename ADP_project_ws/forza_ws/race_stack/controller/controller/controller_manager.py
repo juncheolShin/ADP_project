@@ -31,6 +31,8 @@ from stack_master.parameter_event_handler import ParameterEventHandler
 
 from typing import List, Dict, Union
 from scipy.sparse import diags
+from collections import deque
+import datatime
 
 # This could be external utils functions
 def return_param_value(p: ParameterValue) -> Union[None, bool, int, str, float, List]:
@@ -100,7 +102,6 @@ class Controller(Node):
         self.cpu_pub = self.create_publisher(Float32, '/controller/cpu_usage', 10)
         self.get_logger().info(f"CPU Monitoring Started for PID: {os.getpid()}")
 
-
         # get l1 parameres
         stack_master_path = get_package_share_directory('stack_master')
         config_path = os.path.join(stack_master_path, 'config', self.racecar_version, 'l1_params.yaml')
@@ -127,7 +128,27 @@ class Controller(Node):
         self.position_in_map = None
         self.position_in_map_frenet = None
         self.waypoint_safety_counter = 0
-        
+
+        #for MPC
+        #EMA 필터 및 히스토리
+        self.ema_alpha = 0.4
+        self.ema_x = None; self.ema_y = None; self.ema_yaw = None
+        self.ema_speed = None; self.ema_yaw_rate = None; self.ema_side_slip = None
+        #=======================================
+        # for Training
+        # 7-dim 상태 벡터를 3개 저장 (t, t-1, t-2)
+        self.history_queue = deque(maxlen=3)
+        # Warm Start용 예측값(d1)과 별개로, 실제 나간 명령(d0)을 저장
+        self.last_actual_steering_cmd = 0.0 
+        # Warm Start용 (MPC 내부용)
+        self.mpc_warm_start_steering = 0.0
+        self.last_closest_idx = 0
+
+         # [데이터 저장소]
+        self.training_data = []         # (Legacy: 혹시 몰라 남김)
+        self.current_episode_buffer = [] # 임시 버퍼 (검증 대기)
+        self.permanent_data = []         # 영구 저장소 (파일로 저장됨)
+
         # buffers for improved computation
         self.waypoint_array_buf = MarkerArray()
         self.markers_buf = [Marker() for _ in range(1000)]
@@ -149,16 +170,15 @@ class Controller(Node):
         #STMPC 추가
         elif self.mode == "STMPC" :
             self.get_logger().info("Initializing STMPC controller")
-            self.ema_alpha = 0.4 #노이즈 제거를 위한 ema 알파 
-            self.ema_x = None
-            self.ema_y = None
-            self.ema_yaw = None
-            self.ema_speed = None
-            self.ema_yaw_rate = None
-            self.ema_side_slip = None
-
             self.init_stmpc_controller()
             self.prioritize_dyn = False
+        #Training Mode
+        elif self.mode == "TRAINING" :
+            self.get_logger().info("Initializing TRAINING Mode: Collecting Expert(STMPC) Data...")
+            self.init_map_controller()
+            self.init_stmpc_controller()
+            self.prioritize_dyn = self.l1_params["prioritize_dyn"]
+
         else:
             self.get_logger().error(f"Invalid mode: {self.mode}")
             return
@@ -173,8 +193,10 @@ class Controller(Node):
         self.create_subscription(PoseStamped,'/car_state/pose',  self.car_state_cb, 10) # car position (x, y, theta)
         self.create_subscription(Odometry, '/car_state/frenet/odom',self.car_state_frenet_cb, 10) # car frenet coordinates
         self.create_subscription(LaserScan, '/scan', self.scan_cb, 10) # lidar scan
+        # [신규] Training Supervisor의 상태 메시지 구독 (성공/실패 판정)
+        if self.mode == "TRAINING":
+            self.create_subscription(String, '/training/episode_status', self.status_cb, 10)
 
-        # Block until relevant data is here
         self.wait_for_messages()
         
         #Init converter
@@ -521,7 +543,7 @@ class Controller(Node):
         if parameter_event.node != "/controller" or self.mode == "FTG":
             return
         
-        if self.mode == "MAP":
+        if self.mode == "MAP" or self.mode == "TRAINING":
             self.map_controller.t_clip_min = self.get_parameter('t_clip_min').value
             self.map_controller.t_clip_max = self.get_parameter('t_clip_max').value
             self.map_controller.m_l1 = self.get_parameter('m_l1').value
@@ -623,6 +645,16 @@ class Controller(Node):
         #추가
         self.current_yaw = theta
 
+         # 2. 리셋 감지 (순간이동)
+        if self.ema_x is not None:
+            if math.sqrt((x - self.ema_x)**2 + (y - self.ema_y)**2) > 1.0:
+                self.get_logger().warn("Reset Detected! Clearing History.")
+                self.history_queue.clear()
+                self.current_episode_buffer.clear()
+                self.last_actual_steering_cmd = 0.0
+                self.mpc_warm_start_steering = 0.0
+                self.ema_x = None
+
     def local_waypoint_cb(self, data: WpntArray):
         self.waypoint_list_in_map = []
         for waypoint in data.wpnts:
@@ -666,7 +698,57 @@ class Controller(Node):
     def state_cb(self, data):
         self.state = data.data
 
-    def map_cycle(self):
+    # [신규] 에피소드 상태 수신 (Supervisor)
+    def status_cb(self, msg):
+        if msg.data == "SUCCESS":
+            if len(self.current_episode_buffer) > 0:
+                self.permanent_data.extend(self.current_episode_buffer)
+                self.get_logger().info(f"Episode Success: Committed {len(self.current_episode_buffer)} samples.")
+        elif msg.data == "FAIL":
+            # 실패 시 전체 폐기 (Strict Policy)
+            self.get_logger().warn("Episode Failed: Discarding Buffer.")
+        
+        self.current_episode_buffer.clear()
+        self.history_queue.clear()
+        self.last_actual_steering_cmd = 0.0
+        self.mpc_warm_start_steering = 0.0
+
+        # 3. [핵심] 다음 에피소드를 위한 파라미터 랜덤화 (여기서만 바뀜!)
+        # (이 값은 다음 리셋 전까지 유지됨 -> 일관성 확보)
+        self.current_m = np.random.uniform(0.1, 0.6)
+        self.current_q = np.random.uniform(-0.5, 0.5)
+        self.get_logger().info(f"New Params for Next Episode: m={self.current_m:.2f}, q={self.current_q:.2f}")
+
+    # --- [RLMAP 핵심 로직] ---
+
+    # 1. Global -> Local Waypoint 변환
+    def transform_waypoints(self, waypoints, car_x, car_y, car_yaw):
+        dx = waypoints[:, 0] - car_x
+        dy = waypoints[:, 1] - car_y
+        c = np.cos(car_yaw); s = np.sin(car_yaw)
+        local_x = c * dx + s * dy
+        local_y = -s * dx + c * dy
+        return np.stack((local_x, local_y), axis=1)
+    
+    # 2. Stride Sampling (Path Vector)
+    def get_local_path_input(self, lookahead_idx, num_points=30, stride=3):
+        if self.waypoint_array_in_map is None: return np.zeros(num_points*2)
+        path_len = len(self.waypoint_array_in_map)
+        indices = [(lookahead_idx + (i * stride)) % path_len for i in range(num_points)]
+        
+        future_wps = self.waypoint_array_in_map[indices]
+        local_path = self.transform_waypoints(future_wps, self.ema_x, self.ema_y, self.ema_yaw)
+        return local_path.flatten()
+
+    # 3. History Stacking Update
+    def update_history(self, current_state_vec):
+        if len(self.history_queue) == 0:
+            for _ in range(self.history_queue.maxlen): self.history_queue.append(current_state_vec)
+        else:
+            self.history_queue.append(current_state_vec)
+        return np.array(self.history_queue).flatten()
+
+    def map_cycle(self, override_lookahead = None):
         speed, acceleration, jerk, steering_angle, L1_point, L1_distance, idx_nearest_waypoint = self.map_controller.main_loop(self.state,
                                                                                                                     self.position_in_map,
                                                                                                                     self.waypoint_array_in_map,
@@ -674,12 +756,14 @@ class Controller(Node):
                                                                                                                     self.opponent,
                                                                                                                     self.position_in_map_frenet,
                                                                                                                     self.acc_now,
-                                                                                                                    self.track_length)
+                                                                                                                    self.track_length , 
+                                                                                                                    override_lookahead = override_lookahead)
         # self.set_lookahead_marker(L1_point, 100)
         # self.visualize_steering(steering_angle)
         # self.visualize_trailing_opponent()
         # self.l1_pub.publish(Point(x=float(idx_nearest_waypoint), y=L1_distance))
         
+        self.last_closest_idx = idx_nearest_waypoint
         self.waypoint_safety_counter += 1
         print(self.waypoint_safety_counter, self.rate, self.state_machine_rate)
         if self.waypoint_safety_counter >= self.rate/self.state_machine_rate* 10: #we can use the same waypoints for 5 cycles
@@ -857,7 +941,7 @@ class Controller(Node):
             end_time = time.time()
             duration = end_time - start_time
             hz = 1.0 / duration if duration > 0 else 0  
-            self.get_logger().info(f"[Dynamic MPC Test OK] Speed: {speed:.2f}, Steer: {steering_angle:.3f} , Time : {duration*1000:.2f} ms ({hz:.2f} Hz)", throttle_duration_sec=1.0)
+            self.get_logger().info(f"[Dynamic MPC] Speed: {speed:.2f}, Steer: {steering_angle:.3f} , Time : {duration*1000:.2f} ms ({hz:.2f} Hz)", throttle_duration_sec=1.0)
 
             self.current_steering_angle = steering_angle_d1
             
@@ -867,6 +951,60 @@ class Controller(Node):
             # CVXPY가 실패하거나 넘파이 배열 크기가 안 맞으면 여기로 옴
             self.get_logger().error(f"NMPC planner.plan() FAILED: {e}", throttle_duration_sec=1.0)
             return 0.0, 0.0 
+
+    def training_cycle(self):
+        if self.position_in_map is None or self.speed_now is None: return 0.0, 0.0
+
+        # A. Parametric Randomization (Domain Randomization)
+        # 매 스텝 랜덤하게 map 파라미터를 바꿔서 신경망이 적응하게 함
+        self.current_m = 0.2 #기본 값
+        self.current_q = 0.5
+        
+        # B. Base (map) 실행 with Randomized Params
+        # (map Controller main_loop가 인자를 받도록 수정되었다고 가정)
+        # 직접 계산 로직을 여기에 써도 됨
+        lookahead = (self.current_m * self.speed_now) + self.current_q
+
+        # map 내부 로직 호출
+        pp_speed, pp_steer = self.map_cycle(override_lookahead=lookahead)
+
+        exp_speed, exp_steer = self.stmpc_cycle()
+        
+        if exp_speed == 0.0 and exp_steer == 0.0: # MPC 실패 시
+            self.get_logger().error("Expert Failed!" , throttle_duration_sec = 5.0)
+            return 0.0, 0.0
+
+        # C. Input Feature Construction
+        # (1) State (7-dim): Use LAST ACTUAL COMMAND (d0) for consistency
+        state_vec = np.array([
+            self.ema_x, self.ema_y, self.last_actual_steering_cmd,
+            self.ema_speed, self.ema_yaw, self.ema_yaw_rate, self.ema_side_slip
+        ])
+        
+        # (2) History (21-dim)
+        history_vec = self.update_history(state_vec)
+        
+        # (3) Path (60-dim)
+        path_vec = self.get_local_path_input(self.last_closest_idx, num_points=30, stride=3)
+        
+        # (4) Params (2-dim)
+        param_vec = np.array([self.current_m, self.current_q])
+        
+        # Total Input: 21 + 60 + 2 = 83 dim
+        full_input = np.concatenate((history_vec, path_vec, param_vec))
+
+        # [E] Label Generation & Buffer
+        steer_res = exp_steer - pp_steer
+        speed_res = exp_speed - pp_speed
+
+        data_row = np.concatenate((full_input, [steer_res, speed_res]))
+        self.current_episode_buffer.append(data_row)
+
+        self.last_actual_steering_cmd = exp_steer
+        self.get_logger().info(f"[Train] Expert: [{exp_steer:.2f} , {exp_speed:.2f}] / PP: [{pp_steer:.2f} , {pp_speed:.2f}] \
+/ Res: [{steer_res:.2f} , {speed_res:.2f}] ", throttle_duration_sec=1.0)
+
+        return exp_speed, exp_steer # Expert가 운전
 
     #############
     # MAIN LOOP #
@@ -882,6 +1020,8 @@ class Controller(Node):
         #추가!
         elif self.mode == "STMPC" :
             speed, steer = self.stmpc_cycle()
+        elif self.mode == "TRAINING" : 
+            speed , steer = self.training_cycle()
 
         cpu_msg = Float32()
         cpu_msg.data = current_cpu_usage
@@ -896,6 +1036,20 @@ class Controller(Node):
         ack_msg.drive.speed = speed
         # ack_msg.drive.speed = 0.0
         self.drive_pub.publish(ack_msg)
+
+    def destroy_node(self):
+        if self.mode == "TRAINING" and len(self.permanent_data) > 0:
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            save_dir = os.path.join(current_dir, 'train_data')
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
+            
+            filename = os.path.join(save_dir, f"rlmap_data_{timestamp}.npz")
+            np.savez_compressed(filename, data=np.array(self.permanent_data))
+            print(f"[Result] Saved {len(self.permanent_data)} high-quality samples to {filename}")
+            
+        super().destroy_node()
         
     ############################################MSG CREATION############################################
     # visualization utilities
@@ -1008,5 +1162,10 @@ class Controller(Node):
 def main():
     rclpy.init()
     node = Controller()
-    rclpy.spin(node)
-    rclpy.shutdown()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
